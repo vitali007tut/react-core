@@ -65,23 +65,19 @@ jobs:
                   publish_dir: ./dist
 
     lint:
-        name: Code standards
+        name: Lint
         runs-on: ubuntu-latest
-        timeout-minutes: 10
         steps:
-          - name: "☁️ checkout repository"
-            uses: actions/checkout@v4
+            - name: Checkout repo
+              uses: actions/checkout@v4
 
-          - name: "🔧 setup node"
-            uses: actions/setup-node@v2.1.5
-            with:
-              node-version: 16
+            - name: Setup Node
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 16
 
-          - name: "🔧 install npm@latest"
-            run: npm i -g npm@latest
+            - name: Install dependencies
+              uses: bahmutov/npm-install@v1
 
-          - name: "📦 install dependencies"
-            uses: bahmutov/npm-install@v1
-
-          - name: "🔍 lint code"
-            run: npm run lint
+            - name: "🔍 lint code"
+              run: npm run lint

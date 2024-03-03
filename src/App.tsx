@@ -2,10 +2,8 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import s from "./App.module.css";
-
-import Button from "@mui/material/Button";
-import ButtonUsage from "./Test.tsx";
 import Header from "./components/Header/Header.tsx";
+import LoginPage from "./pages/LoginPage/LoginPage.tsx";
 
 function App() {
     // const [count, setCount] = useState(0)
@@ -14,8 +12,7 @@ function App() {
         <div className={s.container}>
             <Header />
             <div className={s.itemsContainer}>
-                <Button variant="contained">With styled-components</Button>
-                <ButtonUsage />
+                <LoginPage />
             </div>
             {/*<div>
         <a href="https://vitejs.dev" target="_blank">

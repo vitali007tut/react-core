@@ -1,9 +1,14 @@
-// import Button from '../../Button/Button.tsx'
 // import React from 'react';
+
+import { Button } from "../../Button/Button.tsx";
 
 function Logined(/*props*/) {
     return (
-        <div></div>
+        <div>
+            <Button>Logout</Button>
+            <Button>Favorites</Button>
+            <Button>History</Button>
+        </div>
     );
 }
 

@@ -34,17 +34,6 @@ jobs:
                   name: production-files
                   path: ./dist
 
-    # CI:
-    #     name: Continuous Integration
-    #     needs: build
-    #     runs-on: ubuntu-latest
-    #     steps:
-
-    #         - name: Проверка Prettier
-    #           run: npm run prettier
-    #         - name: Проверка Eslint
-    #           run: npm run lint
-
     deploy:
         name: Deploy
         needs: build

@@ -1,4 +1,4 @@
-import reactLogo from "../../assets/react.svg";
+import { Link } from "react-router-dom";
 import s from "./logo.module.css";
 
 // type Props = {
@@ -6,9 +6,9 @@ import s from "./logo.module.css";
 // };
 const Logo = (/*props: Props*/) => {
     return (
-        <a href="https://react.dev" target="_blank">
-            <img src={reactLogo} className={s.logo} alt="React logo" />
-        </a>
+        <Link className={s.logoText} to="/react-core/">
+            LOGO
+        </Link>
     );
 };
 

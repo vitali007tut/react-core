@@ -15,7 +15,7 @@ jobs:
 
         steps:
             - name: Checkout repo
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
 
             - name: Setup Node
               uses: actions/setup-node@v1
@@ -34,15 +34,16 @@ jobs:
                   name: production-files
                   path: ./dist
 
-    CI:
-        name: Continuous Integration
-        needs: build
-        runs-on: ubuntu-latest
-        steps:
-            - name: Проверка Prettier
-              run: npm run prettier
-            - name: Проверка Eslint
-              run: npm run lint
+    # CI:
+    #     name: Continuous Integration
+    #     needs: build
+    #     runs-on: ubuntu-latest
+    #     steps:
+          
+    #         - name: Проверка Prettier
+    #           run: npm run prettier
+    #         - name: Проверка Eslint
+    #           run: npm run lint
 
     deploy:
         name: Deploy
@@ -62,3 +63,25 @@ jobs:
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: ./dist
+
+    lint:
+        name: Code standards
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+          - name: "☁️ checkout repository"
+            uses: actions/checkout@v4
+
+          - name: "🔧 setup node"
+            uses: actions/setup-node@v2.1.5
+            with:
+              node-version: 16
+
+          - name: "🔧 install npm@latest"
+            run: npm i -g npm@latest
+
+          - name: "📦 install dependencies"
+            uses: bahmutov/npm-install@v1
+
+          - name: "🔍 lint code"
+            run: npm run lint

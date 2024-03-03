@@ -36,6 +36,7 @@ jobs:
 
     CI:
         name: Continuous Integration
+        needs: build
         runs-on: ubuntu-latest
         steps:
             - name: Проверка Prettier

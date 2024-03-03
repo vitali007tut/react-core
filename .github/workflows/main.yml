@@ -39,7 +39,7 @@ jobs:
     #     needs: build
     #     runs-on: ubuntu-latest
     #     steps:
-          
+
     #         - name: Проверка Prettier
     #           run: npm run prettier
     #         - name: Проверка Eslint
@@ -65,7 +65,7 @@ jobs:
                   publish_dir: ./dist
 
     lint:
-        name: Lint
+        name: Eslint/Prettier
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repo
@@ -79,5 +79,7 @@ jobs:
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
 
-            - name: "🔍 lint code"
+            - name: "Eslint"
               run: npm run lint
+            - name: "Prettier"
+              run: npm run prettier

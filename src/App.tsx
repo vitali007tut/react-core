@@ -8,16 +8,16 @@ import ButtonUsage from "./Test.tsx";
 import Header from "./components/Header/Header.tsx";
 
 function App() {
-  // const [count, setCount] = useState(0)
+    // const [count, setCount] = useState(0)
 
-  return (
-    <div className={s.container}>
-      <Header />
-      <div className={s.itemsContainer}>
-        <Button variant="contained">With styled-components</Button>
-        <ButtonUsage />
-      </div>
-      {/*<div>
+    return (
+        <div className={s.container}>
+            <Header />
+            <div className={s.itemsContainer}>
+                <Button variant="contained">With styled-components</Button>
+                <ButtonUsage />
+            </div>
+            {/*<div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -37,8 +37,8 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>*/}
-    </div>
-  );
+        </div>
+    );
 }
 
 export default App;

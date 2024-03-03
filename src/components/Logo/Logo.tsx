@@ -1,14 +1,16 @@
-import reactLogo from "../../assets/react.svg";
+import { Link } from "react-router-dom";
 import s from "./logo.module.css";
+import AdbIcon from "@mui/icons-material/Adb";
 
 // type Props = {
 //
 // };
 const Logo = (/*props: Props*/) => {
     return (
-        <a href="https://react.dev" target="_blank">
-            <img src={reactLogo} className={s.logo} alt="React logo" />
-        </a>
+        <Link className={s.logoText} to="/react-core/">
+            <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+            LOGO
+        </Link>
     );
 };
 

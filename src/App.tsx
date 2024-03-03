@@ -1,9 +1,9 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import s from './App.module.css'
+import s from "./App.module.css";
 
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import ButtonUsage from "./Test.tsx";
 import Header from "./components/Header/Header.tsx";
 
@@ -12,12 +12,12 @@ function App() {
 
   return (
     <div className={s.container}>
-        <Header />
-        <div className={s.itemsContainer}>
-            <Button variant='contained'>With styled-components</ Button>
-            <ButtonUsage/>
-        </div>
-        {/*<div>
+      <Header />
+      <div className={s.itemsContainer}>
+        <Button variant="contained">With styled-components</Button>
+        <ButtonUsage />
+      </div>
+      {/*<div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -38,7 +38,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>*/}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -7,6 +7,7 @@ import Header from "./components/Header/Header.tsx";
 import LoginPage from "./pages/LoginPage/LoginPage.tsx";
 import SignUpPage from "./pages/SignUpPage/SignUpPage.tsx";
 import MainPage from "./pages/MainPage/MainPage.tsx";
+import SignUp from "./pages/SignUp.tsx";
 
 function App() {
     // const [count, setCount] = useState(0)
@@ -20,6 +21,7 @@ function App() {
                         <Route path="react-core/" element={<MainPage />} />
                         <Route path="react-core/login" element={<LoginPage />} />
                         <Route path="react-core/signup" element={<SignUpPage />} />
+                        <Route path="react-core/1" element={<SignUp />} />
                     </Routes>
                 </div>
                 {/*<div>

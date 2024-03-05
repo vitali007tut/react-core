@@ -42,8 +42,8 @@
 /*}*/
 
 .container {
-    display: grid;
-    grid-template-rows: 10vh 90vh;
+    /* display: grid; */
+    /* grid-template-rows: 10vh 90vh; */
 }
 
 .itemsContainer {

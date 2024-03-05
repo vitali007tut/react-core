@@ -1,3 +1,4 @@
+// import { sendDataToLs } from "../../components/Utils/dataLs.ts";
 import CommonPage from "../CommonInputPage/CommonPage.tsx";
 
 function SignUpPage() {

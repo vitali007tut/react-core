@@ -4,6 +4,8 @@ import { Button } from "../../components/Button/Button.tsx";
 
 type PropsType = {
     tittle: string;
+    submitLogin?: () => void;
+    // buttonHandler: () => void;
 };
 function CommonPage(props: PropsType) {
     return (
@@ -12,7 +14,7 @@ function CommonPage(props: PropsType) {
             <div className={s.elements}>
                 <InputField label="email" />
                 <InputField label="password" />
-                <Button>Enter</Button>
+                <Button onClick={props.submitLogin}>Enter</Button>
             </div>
         </div>
     );

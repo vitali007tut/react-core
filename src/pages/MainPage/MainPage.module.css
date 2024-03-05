@@ -1,0 +1,8 @@
+.listImg {
+    /* display: grid; */
+    list-style: none;
+    /* flex-wrap: wrap; */
+    /* grid-template-columns: repeat(4, 1fr); */
+    /* grid-auto-rows: 100px; */
+    /* gap: 20px; */
+}

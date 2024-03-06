@@ -22,7 +22,7 @@ function MainPage() {
             });
     }, []);
 
-    items.map((i) => console.log(i));
+    // items.map((i) => console.log(i));
 
     if (!isLoaded) {
         return <div>Loading...</div>;

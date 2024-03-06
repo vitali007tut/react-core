@@ -1,6 +1,5 @@
-const sendDataToLs =() => {
-    console.log('sendDataToLs');
+const sendDataToLs = () => {
+    console.log("sendDataToLs");
+};
 
-}
-
-export { sendDataToLs }
+export { sendDataToLs };

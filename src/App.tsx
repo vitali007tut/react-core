@@ -11,6 +11,7 @@ import SignUp from "./pages/SignUp.tsx";
 
 function App() {
     // const [count, setCount] = useState(0)
+    // const logined = localStorage.getItem('logined') || ''
 
     return (
         <BrowserRouter>

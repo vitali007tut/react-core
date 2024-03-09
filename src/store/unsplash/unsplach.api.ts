@@ -5,15 +5,18 @@ export const unsplashApi = createApi({
     reducerPath: "unsplash/api",
     baseQuery: fetchBaseQuery({
         baseUrl: "https://api.unsplash.com/",
+        method: 'GET',
+        headers: {
+            Authorization: import.meta.env.VITE_CLIEN_ID
+        }
     }),
     endpoints: (build) => ({
-        searchPhotos: build.query<IPhoto[], string>({
-            query: (search: string) => ({
+        searchPhotos: build.query<IPhoto[], { search: string, per_page: string }>({
+            query: ({ search, per_page }) => ({
                 url: `search/photos`,
                 params: {
-                    client_id: "HJboD6dYO80ohcm2nrbPeY2aavUsaoEtQY7bQnusOyQ",
                     query: search,
-                    per_page: 5,
+                    per_page,
                     // page: 1,
                 },
             }),
@@ -23,12 +26,10 @@ export const unsplashApi = createApi({
             query: () => ({
                 url: "photos",
                 params: {
-                    client_id: "HJboD6dYO80ohcm2nrbPeY2aavUsaoEtQY7bQnusOyQ",
                 },
             }),
-            // transformResponse: (response: ServerResponse<IPhoto>) => response.results,
         }),
     }),
 });
 
-export const { useSearchPhotosQuery, useGetPhotosQuery } = unsplashApi;
+export const { useSearchPhotosQuery, useLazySearchPhotosQuery, useGetPhotosQuery } = unsplashApi;

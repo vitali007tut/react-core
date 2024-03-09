@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 
 type Props = {
     id: string;
-    alt_description: string;
+    description: string;
     url: string;
 };
 
@@ -20,7 +20,7 @@ const MediaCard = (props: Props) => {
                     {props.id}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    {props.alt_description}
+                    {props.description}
                 </Typography>
             </CardContent>
             <CardActions>

@@ -7,11 +7,6 @@ import { useCallback, useEffect, useState } from "react";
 import { IconButton, TextField } from "@mui/material";
 import { useDebounce } from "../../hooks/debounce.ts";
 
-// type Props = {
-//     logined: boolean,
-//     isLogined?: () => void
-// }
-
 const Header = () => {
     const [search, setSearch] = useState("");
     const [dropdown, setDropdown] = useState(false);
@@ -37,11 +32,11 @@ const Header = () => {
 
     const clickHandler = (id: string) => {
         console.log(id);
-    }
+    };
 
     const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log('search', search);
+        console.log("search", search);
     };
 
     return (

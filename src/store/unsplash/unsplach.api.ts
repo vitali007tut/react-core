@@ -1,25 +1,34 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IPhoto, ServerResponse } from '../../models/models'
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { IPhoto, ServerResponse } from "../../models/models";
 
 export const unsplashApi = createApi({
-    reducerPath: 'unsplash/api',
+    reducerPath: "unsplash/api",
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://api.unsplash.com/',
+        baseUrl: "https://api.unsplash.com/",
     }),
-    endpoints: build => ({
+    endpoints: (build) => ({
         searchPhotos: build.query<IPhoto[], string>({
             query: (search: string) => ({
                 url: `search/photos`,
                 params: {
-                    client_id: 'HJboD6dYO80ohcm2nrbPeY2aavUsaoEtQY7bQnusOyQ',
+                    client_id: "HJboD6dYO80ohcm2nrbPeY2aavUsaoEtQY7bQnusOyQ",
                     query: search,
                     per_page: 5,
-                    page: 1,
-                }
+                    // page: 1,
+                },
             }),
             transformResponse: (response: ServerResponse<IPhoto>) => response.results,
-        })
-    })
-})
+        }),
+        getPhotos: build.query<IPhoto[], void>({
+            query: () => ({
+                url: "photos",
+                params: {
+                    client_id: "HJboD6dYO80ohcm2nrbPeY2aavUsaoEtQY7bQnusOyQ",
+                },
+            }),
+            // transformResponse: (response: ServerResponse<IPhoto>) => response.results,
+        }),
+    }),
+});
 
-export const {useSearchPhotosQuery} = unsplashApi
+export const { useSearchPhotosQuery, useGetPhotosQuery } = unsplashApi;

@@ -17,14 +17,14 @@ function App() {
         <BrowserRouter>
             <div className={s.container}>
                 <Header />
-                <div className={s.itemsContainer}>
-                    <Routes>
-                        <Route path="react-core/" element={<MainPage />} />
-                        <Route path="react-core/login" element={<LoginPage />} />
-                        <Route path="react-core/signup" element={<SignUpPage />} />
-                        <Route path="react-core/1" element={<SignUp />} />
-                    </Routes>
-                </div>
+                {/* <div className={s.itemsContainer}> */}
+                <Routes>
+                    <Route path="react-core/" element={<MainPage />} />
+                    <Route path="react-core/login" element={<LoginPage />} />
+                    <Route path="react-core/signup" element={<SignUpPage />} />
+                    <Route path="react-core/1" element={<SignUp />} />
+                </Routes>
+                {/* </div> */}
                 {/*<div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

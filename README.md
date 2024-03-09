@@ -1,8 +1,11 @@
-# React + TypeScript + Vite
-
 ![workflow](https://github.com/vitali007tut/react-core/actions/workflows/main.yml/badge.svg)
 
-[deploy](https://vitali007tut.github.io/react-core/)
+# Проект React + TypeScript + Vite + Photos»
+
+## Что выполнено:
+
+-   API: [Unsplash API](https://unsplash.com/documentation)
+-   Deploy: [link](https://vitali007tut.github.io/react-core/)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

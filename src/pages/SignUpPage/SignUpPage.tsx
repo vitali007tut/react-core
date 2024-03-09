@@ -1,6 +1,7 @@
-import s from "../CommonInputPage/CommonPage.module.css";
+import s from "./SignUpPage.module.css";
 import { Button } from "../../components/Button/Button.tsx";
 import { useState } from "react";
+import { Box, Container, TextField } from "@mui/material";
 
 // type PropsType = {
 // tittle: string;
@@ -14,7 +15,7 @@ type CustomerDataType = {
     likes: string[];
 };
 
-function SignUpPage(/* props: PropsType */) {
+function SignUpPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -41,24 +42,33 @@ function SignUpPage(/* props: PropsType */) {
     };
 
     return (
-        <div className={s.container}>
-            <div className={s.title}>Sign Up</div>
-            <form onSubmit={handleSubmit} className={s.elements}>
-                <label>
-                    Enter your login:
-                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </label>
-                <label>
-                    Enter your password:
-                    <input
+        <Container component="main" maxWidth="xs">
+            <Box
+                sx={{
+                    marginTop: 8,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                }}
+            >
+                <div className={s.title}>Sign Up</div>
+                <form onSubmit={handleSubmit} className={s.elements}>
+                    <TextField
+                        label="Login"
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <TextField
+                        label="Password"
                         type="text"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                </label>
-                <Button type="submit">Enter</Button>
-            </form>
-        </div>
+                    <Button type="submit">Enter</Button>
+                </form>
+            </Box>
+        </Container>
     );
 }
 

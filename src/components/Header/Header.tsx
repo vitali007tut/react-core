@@ -8,19 +8,21 @@ import { IconButton, TextField } from "@mui/material";
 import { useDebounce } from "../../hooks/debounce.ts";
 import { useActions } from "../../hooks/actions.ts";
 
-
 const Header = () => {
     const [search, setSearch] = useState("");
     const [dropdown, setDropdown] = useState(false);
     const [isSuggestionsListShow, setIsSuggestionsListShow] = useState<boolean>(false);
     const debounced = useDebounce(search);
-    const { isLoading, isError, data } = useSearchPhotosQuery({search: debounced, per_page: '5'}, {
-        skip: debounced.length < 3,
-    });
+    const { isLoading, isError, data } = useSearchPhotosQuery(
+        { search: debounced, per_page: "5" },
+        {
+            skip: debounced.length < 3,
+        },
+    );
 
     // const [fetchSearch, { isLoading: isSearchLoadin, data: searchData }] = useLazySearchPhotosQuery();
-    
-    const {changeSearch} = useActions()
+
+    const { changeSearch } = useActions();
 
     const handleFocus = useCallback(() => {
         setIsSuggestionsListShow(true);
@@ -45,7 +47,7 @@ const Header = () => {
         // fetchSearch({ search, per_page: '20'});
         setDropdown(false);
         changeSearch(search);
-        setSearch('');
+        setSearch("");
     };
 
     return (

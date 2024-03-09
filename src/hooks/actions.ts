@@ -1,12 +1,12 @@
-import { useDispatch } from 'react-redux'
-import { bindActionCreators } from '@reduxjs/toolkit'
-import { searchActions } from '../store/unsplash/searchSlice'
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "@reduxjs/toolkit";
+import { searchActions } from "../store/unsplash/searchSlice";
 
 const actions = {
-    ...searchActions
-}
+    ...searchActions,
+};
 
 export const useActions = () => {
-    const dispatch = useDispatch()
-    return bindActionCreators(actions, dispatch)
-}
+    const dispatch = useDispatch();
+    return bindActionCreators(actions, dispatch);
+};

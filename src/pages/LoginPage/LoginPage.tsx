@@ -1,6 +1,8 @@
 import { useState } from "react";
 import s from "./LoginPage.module.css";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../../components/Button/Button.tsx";
+import { Box, Container, TextField } from "@mui/material";
 
 type CustomerDataType = {
     email: string;
@@ -9,14 +11,14 @@ type CustomerDataType = {
     likes: string[];
 };
 
-function LoginPage(/* props: PropsType */) {
+function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
+        console.log("handleSubmit");
         // const customerData = {
         //     email,
         //     password,
@@ -43,24 +45,33 @@ function LoginPage(/* props: PropsType */) {
     };
 
     return (
-        <div className={s.container}>
-            <div className={s.title}>Login</div>
-            <form onSubmit={handleSubmit} className={s.elements}>
-                <label>
-                    Enter your login:
-                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </label>
-                <label>
-                    Enter your password:
-                    <input
+        <Container component="main" maxWidth="xs">
+            <Box
+                sx={{
+                    marginTop: 8,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                }}
+            >
+                <div className={s.title}>Login</div>
+                <form onSubmit={handleSubmit} className={s.elements}>
+                    <TextField
+                        label="Login"
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <TextField
+                        label="Password"
                         type="text"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                </label>
-                <button type="submit">Enter</button>
-            </form>
-        </div>
+                    <Button type="submit">Enter</Button>
+                </form>
+            </Box>
+        </Container>
     );
 }
 

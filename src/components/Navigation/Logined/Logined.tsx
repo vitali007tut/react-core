@@ -1,13 +1,21 @@
-// import React from 'react';
+import { Button } from "@mui/material";
+import { useActions } from "../../../hooks/actions.ts";
 
-import { Button } from "../../Button/Button.tsx";
+function Logined() {
+    const { setAuth } = useActions();
 
-function Logined(/*props*/) {
+    const handleLogout = () => {
+        setAuth(false);
+        console.log("handleLogout");
+    };
+
     return (
         <div>
-            <Button>Logout</Button>
-            <Button>Favorites</Button>
-            <Button>History</Button>
+            <Button variant="contained" onClick={handleLogout}>
+                Logout
+            </Button>
+            <Button variant="contained">Favorites</Button>
+            <Button variant="contained">History</Button>
         </div>
     );
 }

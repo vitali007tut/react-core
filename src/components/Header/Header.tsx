@@ -7,6 +7,8 @@ import { useCallback, useEffect, useState } from "react";
 import { IconButton, TextField } from "@mui/material";
 import { useDebounce } from "../../hooks/debounce.ts";
 import { useActions } from "../../hooks/actions.ts";
+import { useAuthSelector } from "../../hooks/redux.ts";
+import Logined from "../Navigation/Logined/Logined.tsx";
 
 const Header = () => {
     const [search, setSearch] = useState("");
@@ -19,9 +21,8 @@ const Header = () => {
             skip: debounced.length < 3,
         },
     );
-
     // const [fetchSearch, { isLoading: isSearchLoadin, data: searchData }] = useLazySearchPhotosQuery();
-
+    const { isAuth } = useAuthSelector((state) => state.userAuth);
     const { changeSearch } = useActions();
 
     const handleFocus = useCallback(() => {
@@ -44,7 +45,6 @@ const Header = () => {
 
     const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // fetchSearch({ search, per_page: '20'});
         setDropdown(false);
         changeSearch(search);
         setSearch("");
@@ -86,7 +86,7 @@ const Header = () => {
                     </IconButton>
                 </div>
             </form>
-            <Logouted />
+            {isAuth ? <Logined /> : <Logouted />}
         </div>
     );
 };

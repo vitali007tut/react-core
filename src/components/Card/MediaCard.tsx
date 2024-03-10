@@ -24,7 +24,7 @@ const MediaCard = (props: Props) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Add</Button>
+                <Button size="small">Add to favorites</Button>
             </CardActions>
         </Card>
     );

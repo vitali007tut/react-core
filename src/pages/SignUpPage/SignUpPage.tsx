@@ -1,8 +1,8 @@
-import {NavLink, useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button/Button";
 import s from "./SignUpPage.module.css";
 import { useEffect, useState } from "react";
-import {useActions} from "../../hooks/actions.ts";
+import { useActions } from "../../hooks/actions.ts";
 
 // type PropsType = {
 // tittle: string;

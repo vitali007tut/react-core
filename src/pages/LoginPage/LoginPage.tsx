@@ -20,12 +20,12 @@ function LoginPage() {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        let usersLS: CustomerDataType[] = []
+        let usersLS: CustomerDataType[] = [];
         if (localStorage.getItem("appUsers")) {
-            usersLS = JSON.parse(localStorage.getItem("appUsers") || '');
+            usersLS = JSON.parse(localStorage.getItem("appUsers") || "");
         }
         if (usersLS) {
-            console.log('NO customers in LS')
+            console.log("NO customers in LS");
             setCustomerExist(false);
         }
         usersLS.forEach((user) => {

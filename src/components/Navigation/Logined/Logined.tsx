@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import { NavLink } from "react-router-dom";
 import { useActions } from "../../../hooks/actions.ts";
 
 function Logined() {
@@ -9,13 +10,17 @@ function Logined() {
     };
 
     return (
-        <div>
+        <>
             <Button variant="contained" onClick={handleLogout}>
                 Logout
             </Button>
-            <Button variant="contained">Favorites</Button>
-            <Button variant="contained">History</Button>
-        </div>
+            <NavLink to="/react-core/favorites">
+                <Button variant="contained">Favorites</Button>
+            </NavLink>
+            <NavLink to="/react-core/history">
+                <Button variant="contained">History</Button>
+            </NavLink>
+        </>
     );
 }
 

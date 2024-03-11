@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
 
-const Logouted = () => {
+function Logouted() {
     return (
         <div>
             <NavLink to="/react-core/login" style={{ marginRight: "10px" }}>
@@ -12,6 +12,6 @@ const Logouted = () => {
             </NavLink>
         </div>
     );
-};
+}
 
 export default Logouted;

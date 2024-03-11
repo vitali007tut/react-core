@@ -1,12 +1,12 @@
 import s from "./MainPage.module.css";
 import { useGetPhotosQuery, useSearchPhotosQuery } from "../../store/unsplash/unsplach.api";
 import MediaCard from "../../components/Card/MediaCard";
-import {useAuthSelector, useSearchSelector} from "../../hooks/redux";
+import { useAuthSelector, useSearchSelector } from "../../hooks/redux";
 
 function MainPage() {
     const { isLoading, data } = useGetPhotosQuery();
     const { search } = useSearchSelector((state) => state.searchUnsplash);
-    const {isAuth} = useAuthSelector((state) => state.userAuth)
+    const { isAuth } = useAuthSelector((state) => state.userAuth);
 
     const { isLoading: isSearchLoading, data: searchData } = useSearchPhotosQuery(
         {
@@ -25,6 +25,7 @@ function MainPage() {
                 {searchData?.map((item) => (
                     <li key={item.id} className={s.liItem}>
                         <MediaCard
+                            id={item.id}
                             description={item.alt_description}
                             url={item.urls.small}
                             logined={isAuth}
@@ -39,6 +40,7 @@ function MainPage() {
                     {data?.map((item) => (
                         <li key={item.id} className={s.liItem}>
                             <MediaCard
+                                id={item.id}
                                 description={item.alt_description}
                                 url={item.urls.small}
                                 logined={isAuth}

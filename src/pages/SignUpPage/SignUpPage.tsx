@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import { Button } from "../../components/Button/Button";
 import s from "./SignUpPage.module.css";
 import { useEffect, useState } from "react";
+import {useActions} from "../../hooks/actions.ts";
 
 // type PropsType = {
 // tittle: string;
@@ -19,6 +20,8 @@ function SignUpPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [customerExist, setCustomerExist] = useState(true);
+    const { setAuth } = useActions();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!localStorage.getItem("appUsers")) {
@@ -47,6 +50,10 @@ function SignUpPage() {
 
         const dataArray: CustomerDataType[] = [...usersLS, customerData];
         localStorage.setItem("appUsers", JSON.stringify(dataArray));
+
+        localStorage.setItem("LoginedUser", JSON.stringify(customerData));
+        setAuth(true);
+        navigate("/react-core");
     };
 
     return (

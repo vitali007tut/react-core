@@ -6,7 +6,6 @@ function Logined() {
 
     const handleLogout = () => {
         setAuth(false);
-        console.log("handleLogout");
     };
 
     return (

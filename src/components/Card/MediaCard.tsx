@@ -6,26 +6,25 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 type Props = {
-    id: string;
     description: string;
     url: string;
+    logined: boolean;
 };
 
 const MediaCard = (props: Props) => {
     return (
         <Card sx={{ maxWidth: 300 }}>
-            <CardMedia sx={{ height: 140 }} image={props.url} title={props.id} />
+            <CardMedia
+                sx={{ height: 140 }}
+                image={props.url}/>
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {props.id}
-                </Typography>
                 <Typography variant="body2" color="text.secondary">
                     {props.description}
                 </Typography>
             </CardContent>
-            <CardActions>
+            {props.logined && <CardActions>
                 <Button size="small">Add to favorites</Button>
-            </CardActions>
+            </CardActions>}
         </Card>
     );
 };

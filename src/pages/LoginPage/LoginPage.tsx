@@ -20,7 +20,14 @@ function LoginPage() {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const usersLS: CustomerDataType[] = JSON.parse(localStorage.getItem("appUsers") || "");
+        let usersLS: CustomerDataType[] = []
+        if (localStorage.getItem("appUsers")) {
+            usersLS = JSON.parse(localStorage.getItem("appUsers") || '');
+        }
+        if (usersLS) {
+            console.log('NO customers in LS')
+            setCustomerExist(false);
+        }
         usersLS.forEach((user) => {
             if (user.email === email && user.password === password) {
                 localStorage.setItem("LoginedUser", JSON.stringify(user));
@@ -72,7 +79,7 @@ function LoginPage() {
             <Button type="submit">Submit</Button>
             {!customerExist && (
                 <p style={{ color: "red" }}>
-                    Customer doesn't exist, please <NavLink to="react-core/signup">signup</NavLink>
+                    Customer doesn't exist, please <NavLink to="/react-core/signup">signup</NavLink>
                 </p>
             )}
         </form>

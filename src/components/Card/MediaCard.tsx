@@ -5,6 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useActions } from "../../hooks/actions";
+import { useState } from "react";
 
 type Props = {
     id: string;
@@ -14,11 +15,17 @@ type Props = {
 };
 
 const MediaCard = (props: Props) => {
-    const { setFav } = useActions();
+    const { setFav, removeFav } = useActions();
+    const [isFavorite, setIsFavorite] = useState(false)
 
     const addToFavorites = () => {
-        console.log("addToFavorites", props.id);
-        setFav(props.id);
+        if (isFavorite) {
+            removeFav(props.id);
+            setIsFavorite(false);
+        } else {
+            setFav(props.id);
+            setIsFavorite(true);
+        }
     };
 
     return (
@@ -31,8 +38,12 @@ const MediaCard = (props: Props) => {
             </CardContent>
             {props.logined && (
                 <CardActions>
-                    <Button onClick={addToFavorites} size="small">
-                        Add to favorites
+                    <Button
+                        onClick={addToFavorites}
+                        size="small"
+                        className={isFavorite ? "favorite" : "simple"}
+                    >
+                        {isFavorite ? "Remove from" : "Add to"} favorites
                     </Button>
                 </CardActions>
             )}

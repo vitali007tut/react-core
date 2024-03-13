@@ -14,14 +14,21 @@ export const favoritesSlice = createSlice({
     initialState,
     reducers: {
         setFav(state, action: PayloadAction<string>) {
-            console.log(Array.from(state.arrayFav), action.payload);
             state.arrayFav = Array.from(state.arrayFav);
             state.arrayFav.push(action.payload);
-            console.log("setFav", state.arrayFav);
             localStorage.setItem("favorites", JSON.stringify(state.arrayFav));
+            // const id = action.payload
+            // const { data } = useGetPhotoQuery({ id })
+            // console.log(data);
+            
             // user.likes = state.arrayFav
             // localStorage.setItem("LoginedUser", user);
         },
+        removeFav(state, action: PayloadAction<string>) {
+            const array = state.arrayFav.filter(item => item !== action.payload)
+            state.arrayFav = array
+            localStorage.setItem("favorites", JSON.stringify(state.arrayFav));
+        }
     },
 });
 

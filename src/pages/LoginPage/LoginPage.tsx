@@ -8,7 +8,7 @@ type CustomerDataType = {
     email: string;
     password: string;
     history: string[];
-    likes: string[];
+    favorites: string[];
 };
 
 function LoginPage() {
@@ -42,7 +42,7 @@ function LoginPage() {
         //     email,
         //     password,
         //     history: [],
-        //     likes: [],
+        //     favorites: [],
         // };
         if (!localStorage.getItem("appUsers")) {
             setCustomerExist(false);

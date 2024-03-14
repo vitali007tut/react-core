@@ -1,11 +1,16 @@
 import s from "./MainPage.module.css";
 import { useGetPhotosQuery, useSearchPhotosQuery } from "../../store/unsplash/unsplach.api";
 import MediaCard from "../../components/Card/MediaCard";
-import { useAuthSelector, useSearchSelector } from "../../hooks/redux";
+import { useAuthSelector, useFavoritesSelector, useSearchSelector, useUserFavoritesSelector } from "../../hooks/redux";
 
 function MainPage() {
     const { isLoading, data } = useGetPhotosQuery();
     const { search } = useSearchSelector((state) => state.searchUnsplash);
+    //*!
+    const { favorites } = useUserFavoritesSelector((state) => state.userFavorites)
+    console.log(favorites);
+    
+    const { arrayFav } = useFavoritesSelector((state) => state.favorites);
     const { isAuth } = useAuthSelector((state) => state.userAuth);
 
     const { isLoading: isSearchLoading, data: searchData } = useSearchPhotosQuery(
@@ -25,10 +30,12 @@ function MainPage() {
                 {searchData?.map((item) => (
                     <li key={item.id} className={s.liItem}>
                         <MediaCard
+                            item={item}
                             id={item.id}
                             description={item.alt_description}
                             url={item.urls.small}
                             logined={isAuth}
+                            favorite={arrayFav.map((e) => e.id).includes(item.id)}
                         />
                     </li>
                 ))}
@@ -40,10 +47,12 @@ function MainPage() {
                     {data?.map((item) => (
                         <li key={item.id} className={s.liItem}>
                             <MediaCard
+                                item={item}
                                 id={item.id}
                                 description={item.alt_description}
                                 url={item.urls.small}
                                 logined={isAuth}
+                                favorite={arrayFav.map((e) => e.id).includes(item.id)}
                             />
                         </li>
                     ))}

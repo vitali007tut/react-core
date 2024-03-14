@@ -13,7 +13,7 @@ type CustomerDataType = {
     email: string;
     password: string;
     history: string[];
-    likes: string[];
+    favorites: string[];
 };
 
 function SignUpPage() {
@@ -43,7 +43,7 @@ function SignUpPage() {
             email,
             password,
             history: [],
-            likes: [],
+            favorites: [],
         };
         setEmail("");
         setPassword("");

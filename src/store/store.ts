@@ -3,6 +3,7 @@ import { unsplashApi } from "./unsplash/unsplach.api";
 import { searchReducer } from "./unsplash/searchSlice";
 import { userAuthReducer } from "./userAuthSlice";
 import { favoriteReducer } from "./favoritesSlice";
+import { userFavoriteReducer } from "./userFavoritesSlice";
 
 const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
         searchUnsplash: searchReducer,
         userAuth: userAuthReducer,
         favorites: favoriteReducer,
+        userFavorites: userFavoriteReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(unsplashApi.middleware),
 });

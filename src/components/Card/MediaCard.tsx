@@ -6,25 +6,30 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useActions } from "../../hooks/actions";
 import { useState } from "react";
+import { IPhoto } from "../../models/models";
+import s from './MediaCard.module.css'
 
 type Props = {
+    item: IPhoto;
     id: string;
     description: string;
     url: string;
     logined: boolean;
+    favorite: boolean;
 };
 
 const MediaCard = (props: Props) => {
-    const { setFav, removeFav } = useActions();
-    const [isFavorite, setIsFavorite] = useState(false)
+    const { setFav, removeFav, addFavToUser } = useActions();
+    const [isFavorite, setIsFavorite] = useState(props.favorite);
 
     const addToFavorites = () => {
         if (isFavorite) {
-            removeFav(props.id);
+            removeFav(props.item);
             setIsFavorite(false);
         } else {
-            setFav(props.id);
+            setFav(props.item);
             setIsFavorite(true);
+            addFavToUser(props.item);
         }
     };
 
@@ -41,7 +46,7 @@ const MediaCard = (props: Props) => {
                     <Button
                         onClick={addToFavorites}
                         size="small"
-                        className={isFavorite ? "favorite" : "simple"}
+                        className={`${isFavorite ? s.simple : s.favorite}`}
                     >
                         {isFavorite ? "Remove from" : "Add to"} favorites
                     </Button>

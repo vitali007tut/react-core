@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IPhoto } from "../models/models";
 
 interface IFavorites {
-    arrayFav: string[];
+    arrayFav: IPhoto[];
 }
 
 const initialState: IFavorites = {
-    // const loginedUser: CustomerDataType = JSON.parse(localStorage.getItem("LoginedUser"))
     arrayFav: JSON.parse(localStorage.getItem("favorites") || "[]"),
 };
 
@@ -13,8 +13,10 @@ export const favoritesSlice = createSlice({
     name: "arrayFav",
     initialState,
     reducers: {
-        setFav(state, action: PayloadAction<string>) {
+        setFav(state, action: PayloadAction<IPhoto>) {
             state.arrayFav = Array.from(state.arrayFav);
+            console.log('setFav', action.payload);
+            
             state.arrayFav.push(action.payload);
             localStorage.setItem("favorites", JSON.stringify(state.arrayFav));
             // const id = action.payload
@@ -24,8 +26,9 @@ export const favoritesSlice = createSlice({
             // user.likes = state.arrayFav
             // localStorage.setItem("LoginedUser", user);
         },
-        removeFav(state, action: PayloadAction<string>) {
-            const array = state.arrayFav.filter(item => item !== action.payload)
+        removeFav(state, action: PayloadAction<IPhoto>) {
+            console.log('removeFav', action.payload);
+            const array = state.arrayFav.filter(item => item.id !== action.payload.id)
             state.arrayFav = array
             localStorage.setItem("favorites", JSON.stringify(state.arrayFav));
         }

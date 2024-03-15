@@ -1,3 +1,10 @@
+export interface IUser {
+    email: string;
+    password: string;
+    favorites: IPhoto[];
+    history: string[];
+}
+
 export interface ServerResponse<T> {
     total: number;
     total_pages: number;

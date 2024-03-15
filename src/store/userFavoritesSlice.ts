@@ -10,12 +10,12 @@ interface IUser {
     history: [];
 }
 
-const user: IUser = JSON.parse(localStorage.getItem("LoginedUser") || '')
+// const user: IUser = JSON.parse(localStorage.getItem("LoginedUser") || '')
 const initialState: IUser = {
-    email: user.email,
-    password: user.password,
-    favorites: user.favorites,
-    history: user.history,
+    email: '',
+    password: '',
+    favorites: [],
+    history: [],
 };
 
 export const userFavoritesSlice = createSlice({

@@ -4,9 +4,11 @@ import { useActions } from "../../../hooks/actions.ts";
 
 function Logined() {
     const { setAuth } = useActions();
+    // const { removeLoginedUser } = useActions();
 
     const handleLogout = () => {
         setAuth(false);
+        // removeLoginedUser()
     };
 
     return (

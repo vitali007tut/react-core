@@ -3,13 +3,14 @@ import s from "./LoginPage.module.css";
 import { Button } from "../../components/Button/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useActions } from "../../hooks/actions";
-
-type CustomerDataType = {
-    email: string;
-    password: string;
-    history: string[];
-    favorites: string[];
-};
+import {IUser} from "../../models/models.ts";
+//
+// type CustomerDataType = {
+//     email: string;
+//     password: string;
+//     history: string[];
+//     favorites: string[];
+// };
 
 function LoginPage() {
     const [email, setEmail] = useState("");
@@ -17,20 +18,21 @@ function LoginPage() {
     const [customerExist, setCustomerExist] = useState(true);
     const navigate = useNavigate();
     const { setAuth } = useActions();
+    const { addLoginedUser } = useActions();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        let usersLS: CustomerDataType[] = [];
+        let usersLS: IUser[] = [];
         if (localStorage.getItem("appUsers")) {
             usersLS = JSON.parse(localStorage.getItem("appUsers") || "");
         }
         if (usersLS) {
-            console.log("NO customers in LS");
             setCustomerExist(false);
         }
         usersLS.forEach((user) => {
             if (user.email === email && user.password === password) {
-                localStorage.setItem("LoginedUser", JSON.stringify(user));
+                // localStorage.setItem("LoginedUser", JSON.stringify(user));
+                addLoginedUser(user)
                 setAuth(true);
                 navigate("/react-core");
             }

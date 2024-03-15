@@ -3,18 +3,19 @@ import { Button } from "../../components/Button/Button";
 import s from "./SignUpPage.module.css";
 import { useEffect, useState } from "react";
 import { useActions } from "../../hooks/actions.ts";
+import {IUser} from "../../models/models.ts";
 
 // type PropsType = {
 // tittle: string;
 // submitLogin?: () => void;
 // buttonHandler: () => void;
 // };
-type CustomerDataType = {
-    email: string;
-    password: string;
-    history: string[];
-    favorites: string[];
-};
+// type CustomerDataType = {
+//     email: string;
+//     password: string;
+//     history: string[];
+//     favorites: string[];
+// };
 
 function SignUpPage() {
     const [email, setEmail] = useState("");
@@ -22,10 +23,11 @@ function SignUpPage() {
     const [customerExist, setCustomerExist] = useState(true);
     const { setAuth } = useActions();
     const navigate = useNavigate();
+    const { addLoginedUser } = useActions();
 
     useEffect(() => {
         if (!localStorage.getItem("appUsers")) {
-            const initialArray: CustomerDataType[] = [];
+            const initialArray: IUser[] = [];
             localStorage.setItem("appUsers", JSON.stringify(initialArray));
         }
     }, []);
@@ -33,13 +35,13 @@ function SignUpPage() {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const usersLS: CustomerDataType[] = JSON.parse(localStorage.getItem("appUsers") || "");
+        const usersLS: IUser[] = JSON.parse(localStorage.getItem("appUsers") || "");
         if (usersLS.map((user) => user.email).includes(email)) {
             setCustomerExist(false);
             return;
         }
 
-        const customerData: CustomerDataType = {
+        const customerData: IUser = {
             email,
             password,
             history: [],
@@ -48,10 +50,11 @@ function SignUpPage() {
         setEmail("");
         setPassword("");
 
-        const dataArray: CustomerDataType[] = [...usersLS, customerData];
+        const dataArray: IUser[] = [...usersLS, customerData];
         localStorage.setItem("appUsers", JSON.stringify(dataArray));
 
-        localStorage.setItem("LoginedUser", JSON.stringify(customerData));
+        // localStorage.setItem("LoginedUser", JSON.stringify(customerData));
+        addLoginedUser(customerData)
         setAuth(true);
         navigate("/react-core");
     };

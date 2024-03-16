@@ -3,15 +3,15 @@ import { bindActionCreators } from "@reduxjs/toolkit";
 import { searchActions } from "../store/unsplash/searchSlice";
 import { userAuthActions } from "../store/userAuthSlice";
 import { favoriteActions } from "../store/favoritesSlice";
-import { userFavoriteActions } from "../store/userFavoritesSlice";
-import {customerAuthActions} from "../store/customerAuthSlice.ts";
+import { arrayUsersActions } from "../store/arrayUsersSlice.ts";
 
 const actions = {
     ...searchActions,
     ...userAuthActions,
+    ...arrayUsersActions,
+
+    //*****! */
     ...favoriteActions,
-    ...userFavoriteActions,
-    ...customerAuthActions,
 };
 
 export const useActions = () => {

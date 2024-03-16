@@ -249,10 +249,3 @@ export interface Social2 {
     twitter_username: string;
     paypal_email: unknown;
 }
-
-export type CustomerDataType = {
-    email: string;
-    password: string;
-    history: string[];
-    likes: string[];
-};

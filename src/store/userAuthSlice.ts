@@ -5,7 +5,7 @@ interface IAuth {
 }
 
 const initialState: IAuth = {
-    isAuth: Boolean(localStorage.getItem("isAuth")),
+    isAuth: localStorage.getItem("isAuth") === "true" ? true : false,
 };
 
 export const userAuthSlice = createSlice({
@@ -14,7 +14,6 @@ export const userAuthSlice = createSlice({
     reducers: {
         setAuth(state, action: PayloadAction<boolean>) {
             state.isAuth = action.payload;
-            console.log("setAuth", state.isAuth);
             localStorage.setItem("isAuth", state.isAuth.toString());
         },
     },

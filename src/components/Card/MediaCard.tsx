@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import { useActions } from "../../hooks/actions";
 import { useState } from "react";
 import { IPhoto } from "../../models/models";
-import s from './MediaCard.module.css'
+import s from "./MediaCard.module.css";
 
 type Props = {
     item: IPhoto;
@@ -19,17 +19,16 @@ type Props = {
 };
 
 const MediaCard = (props: Props) => {
-    const { setFav, removeFav, addFavToUser } = useActions();
+    const { addFavToCurrentUser, removeFavFromCurrentUser } = useActions();
     const [isFavorite, setIsFavorite] = useState(props.favorite);
 
     const addToFavorites = () => {
         if (isFavorite) {
-            removeFav(props.item);
+            removeFavFromCurrentUser(props.item);
             setIsFavorite(false);
         } else {
-            setFav(props.item);
+            addFavToCurrentUser(props.item);
             setIsFavorite(true);
-            addFavToUser(props.item);
         }
     };
 

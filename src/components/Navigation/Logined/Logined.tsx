@@ -1,14 +1,14 @@
 import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { useActions } from "../../../hooks/actions.ts";
+import { cleareLogin } from "../../../hooks/lsService.ts";
 
 function Logined() {
     const { setAuth } = useActions();
-    // const { removeLoginedUser } = useActions();
 
     const handleLogout = () => {
         setAuth(false);
-        // removeLoginedUser()
+        cleareLogin();
     };
 
     return (

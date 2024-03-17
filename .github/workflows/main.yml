@@ -27,7 +27,7 @@ jobs:
 
             - name: Build project
               run: npm run build
-              env: 
+              env:
                   VITE_CLIEN_ID: ${{secrets.VITE_CLIEN_ID}}
 
             - name: Upload production-ready build files

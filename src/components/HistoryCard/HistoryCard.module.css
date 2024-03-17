@@ -1,0 +1,27 @@
+.card {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    align-items: center;
+}
+
+.delButton {
+    color: red;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.delButton:hover {
+    opacity: 1;
+}
+
+.link {
+    font-size: 1.5rem;
+    color: black;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.link:hover {
+    opacity: 1;
+}

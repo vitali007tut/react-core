@@ -1,74 +1,69 @@
+import { NavLink, useNavigate } from "react-router-dom";
+import { Button } from "../../components/Button/Button";
 import s from "./SignUpPage.module.css";
-import { Button } from "../../components/Button/Button.tsx";
 import { useState } from "react";
-import { Box, Container, TextField } from "@mui/material";
-
-// type PropsType = {
-// tittle: string;
-// submitLogin?: () => void;
-// buttonHandler: () => void;
-// };
-type CustomerDataType = {
-    email: string;
-    password: string;
-    history: string[];
-    likes: string[];
-};
+import { useActions } from "../../hooks/actions.ts";
+import { IUser } from "../../models/models.ts";
+import { isUserExists } from "../../hooks/lsService.ts";
 
 function SignUpPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [customerExist, setCustomerExist] = useState(true);
+    const { setAuth, addToArray } = useActions();
+    const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const customerData = {
+        if (isUserExists(email)) {
+            setCustomerExist(false);
+            return;
+        }
+
+        setAuth(true);
+        const customerData: IUser = {
             email,
             password,
             history: [],
-            likes: [],
+            favorites: [],
         };
-        setEmail("");
-        setPassword("");
-        let dataArray: CustomerDataType[] = [];
-
-        const retString = localStorage.getItem("storeData") || "";
-        const retArray = JSON.parse(retString);
-
-        dataArray = retArray;
-        dataArray.push(customerData);
-        dataArray.map((e) => console.log(e));
-        localStorage.setItem("storeData", JSON.stringify(dataArray));
+        addToArray(customerData);
+        navigate("/react-core");
     };
 
     return (
-        <Container component="main" maxWidth="xs">
-            <Box
-                sx={{
-                    marginTop: 8,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
+        <form onSubmit={handleSubmit} className={s.form}>
+            <div className={s.title}>Sign Up</div>
+            <input
+                placeholder="Email"
+                type="text"
+                value={email}
+                onChange={(e) => {
+                    setEmail(e.target.value);
+                    setCustomerExist(true);
                 }}
-            >
-                <div className={s.title}>Sign Up</div>
-                <form onSubmit={handleSubmit} className={s.elements}>
-                    <TextField
-                        label="Login"
-                        type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <TextField
-                        label="Password"
-                        type="text"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <Button type="submit">Enter</Button>
-                </form>
-            </Box>
-        </Container>
+                pattern="\D{3,}"
+                required
+            />
+            <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => {
+                    setPassword(e.target.value);
+                    setCustomerExist(true);
+                }}
+                pattern="\D{3,}"
+                required
+            />
+            <Button type="submit">Submit</Button>
+            {!customerExist && (
+                <p className={s.warning}>
+                    Customer exists, please <NavLink to="/react-core/login">login</NavLink>
+                </p>
+            )}
+        </form>
     );
 }
 

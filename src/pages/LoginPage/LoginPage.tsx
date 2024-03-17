@@ -1,77 +1,106 @@
 import { useState } from "react";
 import s from "./LoginPage.module.css";
-import { useNavigate } from "react-router-dom";
-import { Button } from "../../components/Button/Button.tsx";
-import { Box, Container, TextField } from "@mui/material";
-
-type CustomerDataType = {
-    email: string;
-    password: string;
-    history: string[];
-    likes: string[];
-};
+import { Button } from "../../components/Button/Button";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useActions } from "../../hooks/actions";
+import { isCorrectData, isUserExists, setUser } from "../../hooks/lsService.ts";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [customerExist, setCustomerExist] = useState(true);
+    const [isUserCorrect, setIsUserCorrect] = useState(true);
     const navigate = useNavigate();
+    const { setAuth } = useActions();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log("handleSubmit");
+
+        if (!isUserExists(email)) {
+            setCustomerExist(false);
+            return;
+        }
+
+        if (!isCorrectData(email, password)) {
+            setIsUserCorrect(false);
+        } else {
+            setAuth(true);
+            navigate("/react-core");
+            setUser(email);
+        }
+
+        //**! */
+        // let usersLS: IUser[] = [];
+        // if (localStorage.getItem("appUsers")) {
+        //     usersLS = JSON.parse(localStorage.getItem("appUsers") || "");
+        // }
+        // if (usersLS) {
+        //     setCustomerExist(false);
+        // }
+        // usersLS.forEach((user) => {
+        //     if (user.email === email && user.password === password) {
+        //         localStorage.setItem("LoginedUser", JSON.stringify(user));
+        //         addLoginedUser(user)
+        //         setAuth(true);
+        //         navigate("/react-core");
+        //     }
+        // });
+
+        // setEmail("");
+        // setPassword("");
         // const customerData = {
         //     email,
         //     password,
         //     history: [],
-        //     likes: [],
+        //     favorites: [],
         // };
-        setEmail("");
-        setPassword("");
-        let dataArray: CustomerDataType[] = [];
+        // if (!localStorage.getItem("appUsers")) {
+        //     setCustomerExist(false);
+        // }
 
-        const retString = localStorage.getItem("storeData") || "";
-        const retArray = JSON.parse(retString);
-
-        dataArray = retArray;
-
-        dataArray.map((e) => {
-            if (email === e.email && password === e.password) {
-                console.log("customer exists");
-                navigate("/react-core");
-                localStorage.setItem("logined", "true");
-            }
-        });
         // localStorage.setItem("storeData", JSON.stringify(dataArray));
     };
 
     return (
-        <Container component="main" maxWidth="xs">
-            <Box
-                sx={{
-                    marginTop: 8,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
+        <form onSubmit={handleSubmit} className={s.form}>
+            <div className={s.title}>LogIn</div>
+            <input
+                placeholder="Email"
+                type="text"
+                value={email}
+                onChange={(e) => {
+                    setEmail(e.target.value);
+                    setCustomerExist(true);
+                    setIsUserCorrect(true);
                 }}
-            >
-                <div className={s.title}>Login</div>
-                <form onSubmit={handleSubmit} className={s.elements}>
-                    <TextField
-                        label="Login"
-                        type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <TextField
-                        label="Password"
-                        type="text"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <Button type="submit">Enter</Button>
-                </form>
-            </Box>
-        </Container>
+                pattern="\D{3,}"
+                required
+            />
+            <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => {
+                    setPassword(e.target.value);
+                    setCustomerExist(true);
+                    setIsUserCorrect(true);
+                }}
+                pattern="\D{3,}"
+                required
+            />
+            <Button type="submit">Submit</Button>
+            {!customerExist && (
+                <p className={s.warning}>
+                    Customer doesn't exist, please <NavLink to="/react-core/signup">signup</NavLink>
+                </p>
+            )}
+            {!isUserCorrect && (
+                <p className={s.warning}>
+                    Password incorrect, please try one more time or{" "}
+                    <NavLink to="/react-core/signup">signup</NavLink>
+                </p>
+            )}
+        </form>
     );
 }
 

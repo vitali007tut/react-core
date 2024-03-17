@@ -1,0 +1,7 @@
+.buttons * {
+    margin-right: 10px;
+}
+
+a .active {
+    font-weight: 700;
+}

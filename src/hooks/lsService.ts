@@ -71,3 +71,15 @@ export function getFavoritesArray(users: IUser[]): IPhoto[] {
 
     return favorites;
 }
+
+export function getHistoryArray(users: IUser[]): string[] {
+    let history: string[] = [];
+    const login = receaveLogin();
+    users.forEach((user) => {
+        if (user.email === login) {
+            history = [...user.history];
+        }
+    });
+
+    return history;
+}

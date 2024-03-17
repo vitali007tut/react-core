@@ -26,10 +26,27 @@ export const arrayUsersSlice = createSlice({
             const login = receaveLogin();
             state.forEach((e) => {
                 if (e.email === login) {
-                    e.favorites.forEach((e) => console.log(e.id));
                     e.favorites = e.favorites.filter((item) => item.id !== action.payload.id);
-                    console.log(login, action.payload.id);
-                    e.favorites.forEach((e) => console.log(e.id));
+                }
+            });
+            localStorage.setItem("arrayUsers", JSON.stringify(state));
+        },
+        addSearchToCurrentUser(state, action: PayloadAction<string>) {
+            const login = receaveLogin();
+            state.forEach((e) => {
+                if (e.email === login) {
+                    if (!e.history.includes(action.payload)) {
+                        e.history.push(action.payload);
+                    }
+                }
+            });
+            localStorage.setItem("arrayUsers", JSON.stringify(state));
+        },
+        removeSearchFromCurrentUser(state, action: PayloadAction<string>) {
+            const login = receaveLogin();
+            state.forEach((e) => {
+                if (e.email === login) {
+                    e.history = e.history.filter((item) => item !== action.payload);
                 }
             });
             localStorage.setItem("arrayUsers", JSON.stringify(state));

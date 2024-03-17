@@ -9,12 +9,14 @@ import { useDebounce } from "../../hooks/debounce.ts";
 import { useActions } from "../../hooks/actions.ts";
 import { useAuthSelector } from "../../hooks/redux.ts";
 import Logined from "../Navigation/Logined/Logined.tsx";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
     const [search, setSearch] = useState("");
     const [dropdown, setDropdown] = useState(false);
     const [isSuggestionsListShow, setIsSuggestionsListShow] = useState<boolean>(false);
     const debounced = useDebounce(search);
+    const navigate = useNavigate();
     const { isLoading, isError, data } = useSearchPhotosQuery(
         { search: debounced, per_page: "5" },
         {
@@ -23,7 +25,7 @@ const Header = () => {
     );
     // const [fetchSearch, { isLoading: isSearchLoadin, data: searchData }] = useLazySearchPhotosQuery();
     const { isAuth } = useAuthSelector((state) => state.userAuth);
-    const { changeSearch } = useActions();
+    const { changeSearch, addSearchToCurrentUser } = useActions();
 
     const handleFocus = useCallback(() => {
         setIsSuggestionsListShow(true);
@@ -48,6 +50,8 @@ const Header = () => {
         setDropdown(false);
         changeSearch(search);
         setSearch("");
+        if (isAuth) addSearchToCurrentUser(search);
+        navigate("/react-core/");
     };
 
     return (
@@ -65,6 +69,7 @@ const Header = () => {
                         onBlur={handleBlur}
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
+                        required
                     />
 
                     {dropdown && isSuggestionsListShow && (

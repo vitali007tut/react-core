@@ -29,30 +29,7 @@ function SignUpPage() {
             favorites: [],
         };
         addToArray(customerData);
-        // addCurrentUser(receaveUserfromLs(email));
         navigate("/react-core");
-        // removeUserFromArray(email);
-
-        //***!!! */
-        // const usersLS: IUser[] = JSON.parse(localStorage.getItem("appUsers") || '');
-        // if (usersLS.map((user) => user.email).includes(email)) {
-        //     setCustomerExist(false);
-        //     return;
-        // }
-
-        // const customerData: IUser = {
-        //     email,
-        //     password,
-        //     history: [],
-        //     favorites: [],
-        // };
-
-        // const dataArray: IUser[] = [...usersLS, customerData];
-        // localStorage.setItem("appUsers", JSON.stringify(dataArray));
-        // addUserInStartArray(customerData);
-        // addLoginedUser(customerData);
-        // setAuth(true);
-        // navigate("/react-core");
     };
 
     return (

@@ -51,7 +51,7 @@ export default function DetailsPage() {
                 </div>
                 <div>
                     <b>Bigger view: </b>
-                    <a href={data?.urls.regular} target="_blank">
+                    <a href={data?.urls.small} target="_blank">
                         Link
                     </a>
                 </div>

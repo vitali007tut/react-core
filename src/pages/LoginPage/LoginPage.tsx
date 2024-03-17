@@ -28,37 +28,6 @@ function LoginPage() {
             navigate("/react-core");
             setUser(email);
         }
-
-        //**! */
-        // let usersLS: IUser[] = [];
-        // if (localStorage.getItem("appUsers")) {
-        //     usersLS = JSON.parse(localStorage.getItem("appUsers") || "");
-        // }
-        // if (usersLS) {
-        //     setCustomerExist(false);
-        // }
-        // usersLS.forEach((user) => {
-        //     if (user.email === email && user.password === password) {
-        //         localStorage.setItem("LoginedUser", JSON.stringify(user));
-        //         addLoginedUser(user)
-        //         setAuth(true);
-        //         navigate("/react-core");
-        //     }
-        // });
-
-        // setEmail("");
-        // setPassword("");
-        // const customerData = {
-        //     email,
-        //     password,
-        //     history: [],
-        //     favorites: [],
-        // };
-        // if (!localStorage.getItem("appUsers")) {
-        //     setCustomerExist(false);
-        // }
-
-        // localStorage.setItem("storeData", JSON.stringify(dataArray));
     };
 
     return (

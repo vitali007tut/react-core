@@ -9,7 +9,7 @@ import { useDebounce } from "../../hooks/debounce.ts";
 import { useActions } from "../../hooks/actions.ts";
 import { useAuthSelector } from "../../hooks/redux.ts";
 import Logined from "../Navigation/Logined/Logined.tsx";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
     const [search, setSearch] = useState("");
@@ -40,10 +40,6 @@ const Header = () => {
     useEffect(() => {
         setDropdown(debounced.length >= 3);
     }, [debounced, data]);
-
-    const clickHandler = (id: string) => {
-        console.log(id);
-    };
 
     const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -76,12 +72,13 @@ const Header = () => {
                         <ul className={s.dropDownArea}>
                             {isLoading && <p className="text-center">Loading...</p>}
                             {data?.map((item) => (
-                                <li
-                                    key={item.id}
-                                    className={s.dropCard}
-                                    onClick={() => clickHandler(item.id)}
-                                >
-                                    <img className={s.dropDownImg} src={item.urls.thumb}></img>
+                                <li key={item.id} className={s.dropCard}>
+                                    <Link
+                                        to={`/react-core/details/${item.id}`}
+                                        className={s.linkItem}
+                                    >
+                                        <img className={s.dropDownImg} src={item.urls.thumb}></img>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

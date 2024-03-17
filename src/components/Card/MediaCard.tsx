@@ -34,11 +34,6 @@ const MediaCard = (props: Props) => {
         }
     };
 
-    // const cardDetailsHandler = () => {
-    //     console.log(props.id);
-
-    // }
-
     return (
         <Card sx={{ maxWidth: 300 }}>
             <CardMedia sx={{ height: 140 }} image={props.url} />
@@ -48,9 +43,7 @@ const MediaCard = (props: Props) => {
                 </Typography>
             </CardContent>
             <div className={s.buttons}>
-                {/* <Link to={`/details/${props.id}`}> */}
                 <Button href={`/react-core/details/${props.id}`}>Details</Button>
-                {/* </Link> */}
                 {props.logined && (
                     <CardActions>
                         <Button

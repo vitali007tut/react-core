@@ -6,6 +6,7 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage.tsx";
 import MainPage from "./pages/MainPage/MainPage.tsx";
 import HistoryPage from "./pages/HistoryPage/HistoryPage.tsx";
 import FavoritesPage from "./pages/FavoritesPage/FavoritesPage.tsx";
+import DetailsPage from "./pages/DetailsPage/DetailsPage.tsx";
 
 function App() {
     // const logined = localStorage.getItem('logined') || ''
@@ -21,6 +22,7 @@ function App() {
                     <Route path="react-core/signup" element={<SignUpPage />} />
                     <Route path="react-core/favorites" element={<FavoritesPage />} />
                     <Route path="react-core/history" element={<HistoryPage />} />
+                    <Route path="react-core/details/:id" element={<DetailsPage />} />
                 </Routes>
                 {/* </div> */}
             </div>

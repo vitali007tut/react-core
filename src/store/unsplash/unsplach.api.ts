@@ -17,7 +17,6 @@ export const unsplashApi = createApi({
                 params: {
                     query: search,
                     per_page,
-                    // page: 1,
                 },
             }),
             transformResponse: (response: ServerResponse<IPhoto>) => response.results,
@@ -28,7 +27,12 @@ export const unsplashApi = createApi({
                 params: {},
             }),
         }),
+        getPhoto: build.query<IPhoto, string>({
+            query: (id: string) => ({
+                url: `photos/${id}`,
+            }),
+        }),
     }),
 });
 
-export const { useSearchPhotosQuery, useLazySearchPhotosQuery, useGetPhotosQuery } = unsplashApi;
+export const { useSearchPhotosQuery, useLazySearchPhotosQuery, useGetPhotosQuery, useGetPhotoQuery } = unsplashApi;

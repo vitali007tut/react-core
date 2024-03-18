@@ -3,7 +3,7 @@ import { useGetPhotoQuery } from "../../store/unsplash/unsplach.api";
 import { Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { useArrayUsersSelector, useAuthSelector } from "../../hooks/redux";
+import { useArrayUsersSelector, useTypedSelector } from "../../hooks/redux";
 import { IPhoto } from "../../models/models";
 import { getFavoritesArray } from "../../hooks/lsService";
 import { useState } from "react";
@@ -13,7 +13,7 @@ import s from "./DetailsPage.module.css";
 export default function DetailsPage() {
     const { id } = useParams();
     const { addFavToCurrentUser, removeFavFromCurrentUser } = useActions();
-    const { isAuth } = useAuthSelector((state) => state.userAuth);
+    const { isAuth } = useTypedSelector((state) => state.userAuth);
     let favorites: IPhoto[] = [];
     const users = useArrayUsersSelector((state) => state.arrayUsers);
     favorites = getFavoritesArray(users);
@@ -51,7 +51,7 @@ export default function DetailsPage() {
                 </div>
                 <div>
                     <b>Bigger view: </b>
-                    <a href={data?.urls.small} target="_blank">
+                    <a href={data?.urls.regular} target="_blank">
                         Link
                     </a>
                 </div>

@@ -2,9 +2,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button/Button";
 import s from "./SignUpPage.module.css";
 import { useState } from "react";
-import { useActions } from "../../hooks/actions.ts";
-import { IUser } from "../../models/models.ts";
-import { isUserExists } from "../../hooks/lsService.ts";
+import { useActions } from "../../hooks/actions";
+import { IUser } from "../../models/models";
+import { isUserExists } from "../../hooks/lsService";
 
 function SignUpPage() {
     const [email, setEmail] = useState("");

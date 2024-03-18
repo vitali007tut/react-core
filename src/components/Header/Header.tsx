@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import { IconButton, TextField } from "@mui/material";
 import { useDebounce } from "../../hooks/debounce.ts";
 import { useActions } from "../../hooks/actions.ts";
-import { useAuthSelector } from "../../hooks/redux.ts";
+import { useTypedSelector } from "../../hooks/redux.ts";
 import Logined from "../Navigation/Logined/Logined.tsx";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -24,7 +24,7 @@ const Header = () => {
         },
     );
     // const [fetchSearch, { isLoading: isSearchLoadin, data: searchData }] = useLazySearchPhotosQuery();
-    const { isAuth } = useAuthSelector((state) => state.userAuth);
+    const { isAuth } = useTypedSelector((state) => state.userAuth);
     const { changeSearch, addSearchToCurrentUser } = useActions();
 
     const handleFocus = useCallback(() => {

@@ -19,9 +19,7 @@ export function isCorrectData(email: string, password: string) {
 }
 
 export function receaveUserfromLs(email: string): IUser {
-    // if (!localStorage.getItem('arrayUsers')) return false
     const usersLs: IUser[] = JSON.parse(localStorage.getItem("arrayUsers") || "");
-    // if (!usersLs.length) return false;
     const userInArray: IUser[] = usersLs.filter((userLs) => userLs.email === email);
     return userInArray[0];
 }
@@ -63,7 +61,7 @@ export function setUser(login: string): void {
 export function getFavoritesArray(users: IUser[]): IPhoto[] {
     let favorites: IPhoto[] = [];
     const login = receaveLogin();
-    users.forEach((user) => {
+    users.filter((user) => {
         if (user.email === login) {
             favorites = [...user.favorites];
         }
@@ -82,4 +80,8 @@ export function getHistoryArray(users: IUser[]): string[] {
     });
 
     return history;
+}
+
+export function setAuthToLs(value: string) {
+    localStorage.setItem("isAuth", value);
 }

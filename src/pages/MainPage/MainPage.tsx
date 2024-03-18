@@ -1,14 +1,14 @@
 import s from "./MainPage.module.css";
 import { useGetPhotosQuery, useSearchPhotosQuery } from "../../store/unsplash/unsplach.api";
 import MediaCard from "../../components/Card/MediaCard";
-import { useAuthSelector, useSearchSelector, useArrayUsersSelector } from "../../hooks/redux";
+import { useTypedSelector, useSearchSelector, useArrayUsersSelector } from "../../hooks/redux";
 import { IPhoto } from "../../models/models";
 import { getFavoritesArray } from "../../hooks/lsService";
 
 function MainPage() {
     const { isLoading, data } = useGetPhotosQuery();
     const { search } = useSearchSelector((state) => state.searchUnsplash);
-    const { isAuth } = useAuthSelector((state) => state.userAuth);
+    const { isAuth } = useTypedSelector((state) => state.userAuth);
     let favorites: IPhoto[] = [];
     const users = useArrayUsersSelector((state) => state.arrayUsers);
     favorites = getFavoritesArray(users);

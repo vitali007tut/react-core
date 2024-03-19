@@ -7,23 +7,25 @@ import MainPage from "./pages/MainPage/MainPage.tsx";
 import HistoryPage from "./pages/HistoryPage/HistoryPage.tsx";
 import FavoritesPage from "./pages/FavoritesPage/FavoritesPage.tsx";
 import DetailsPage from "./pages/DetailsPage/DetailsPage.tsx";
+import { ErrorBoundary } from "react-error-boundary";
 
 function App() {
-
     return (
-        <BrowserRouter>
-            <div className={s.container}>
-                <Header />
-                <Routes>
-                    <Route path="react-core/" element={<MainPage />} />
-                    <Route path="react-core/login" element={<LoginPage />} />
-                    <Route path="react-core/signup" element={<SignUpPage />} />
-                    <Route path="react-core/favorites" element={<FavoritesPage />} />
-                    <Route path="react-core/history" element={<HistoryPage />} />
-                    <Route path="react-core/details/:id" element={<DetailsPage />} />
-                </Routes>
-            </div>
-        </BrowserRouter>
+        <ErrorBoundary fallback={<div>Something went wrong</div>}>
+            <BrowserRouter>
+                <div className={s.container}>
+                    <Header />
+                    <Routes>
+                        <Route path="react-core/" element={<MainPage />} />
+                        <Route path="react-core/login" element={<LoginPage />} />
+                        <Route path="react-core/signup" element={<SignUpPage />} />
+                        <Route path="react-core/favorites" element={<FavoritesPage />} />
+                        <Route path="react-core/history" element={<HistoryPage />} />
+                        <Route path="react-core/details/:id" element={<DetailsPage />} />
+                    </Routes>
+                </div>
+            </BrowserRouter>
+        </ErrorBoundary>
     );
 }
 

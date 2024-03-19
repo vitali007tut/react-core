@@ -35,8 +35,4 @@ export const unsplashApi = createApi({
     }),
 });
 
-export const {
-    useSearchPhotosQuery,
-    useGetPhotosQuery,
-    useGetPhotoQuery,
-} = unsplashApi;
+export const { useSearchPhotosQuery, useGetPhotosQuery, useGetPhotoQuery } = unsplashApi;

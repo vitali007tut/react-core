@@ -61,7 +61,7 @@ export function setUser(login: string): void {
 export function getFavoritesArray(users: IUser[]): IPhoto[] {
     let favorites: IPhoto[] = [];
     const login = receaveLogin();
-    const user: IUser | undefined = users.find((user) => (user.email === login))
+    const user: IUser | undefined = users.find((user) => user.email === login);
     if (user) favorites = [...user.favorites];
 
     return favorites;
@@ -70,8 +70,8 @@ export function getFavoritesArray(users: IUser[]): IPhoto[] {
 export function getHistoryArray(users: IUser[]): string[] {
     let history: string[] = [];
     const login = receaveLogin();
-    const user: IUser | undefined = users.find((user) => (user.email === login))
-    if (user) history = [...user.history]
+    const user: IUser | undefined = users.find((user) => user.email === login);
+    if (user) history = [...user.history];
 
     return history;
 }
@@ -81,23 +81,23 @@ export function setAuthToLs(value: string) {
 }
 
 export function getAuthStatus(): boolean {
-    return localStorage.getItem("isAuth") === "true" ? true : false
-} 
+    return localStorage.getItem("isAuth") === "true" ? true : false;
+}
 
 export function setSearchWord(value: string): void {
-    localStorage.setItem('Search word', value)
+    localStorage.setItem("Search word", value);
 }
 
 export function getSearchWord(): string {
-    return localStorage.getItem('Search word') || ''
+    return localStorage.getItem("Search word") || "";
 }
 
 export function getUsersFromDB(): IUser[] {
-    return JSON.parse(localStorage.getItem("arrayUsers") || "[]")
+    return JSON.parse(localStorage.getItem("arrayUsers") || "[]");
 }
 
 export function setUsersToLs(value: IUser[]): void {
-    localStorage.setItem("arrayUsers", JSON.stringify(value))
+    localStorage.setItem("arrayUsers", JSON.stringify(value));
 }
 
 export function setAuthLoginToLs(value: string): void {

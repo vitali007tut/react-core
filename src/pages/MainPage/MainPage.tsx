@@ -27,10 +27,9 @@ function MainPage() {
         <>
             <ul className={s.listImg}>
                 {isSearchLoading && <p className="text-center">Search loading...</p>}
-                {(searchData?.length === 0) && (
+                {searchData?.length === 0 && (
                     <p style={{ textAlign: "center", fontSize: "1.5rem" }}>
-                        No search results with word:{" "}
-                        <span style={{ color: "red" }}>{search}</span>
+                        No search results with word: <span style={{ color: "red" }}>{search}</span>
                     </p>
                 )}
                 {searchData?.map((item) => (
@@ -45,7 +44,6 @@ function MainPage() {
                         />
                     </li>
                 ))}
-                
             </ul>
 
             {search.length < 3 && (

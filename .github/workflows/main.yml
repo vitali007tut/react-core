@@ -28,7 +28,7 @@ jobs:
             - name: Build project
               run: npm run build
               env:
-                VITE_CLIEN_ID: ${{ secrets.VITE_CLIEN_ID }}
+                  VITE_CLIEN_ID: ${{ secrets.VITE_CLIEN_ID }}
 
             - name: Upload production-ready build files
               uses: actions/upload-artifact@v2
@@ -54,6 +54,8 @@ jobs:
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: ./dist
+              env:
+                  VITE_CLIEN_ID: ${{ secrets.VITE_CLIEN_ID }}
 
     lint:
         name: Eslint/Prettier
@@ -74,6 +76,3 @@ jobs:
               run: npm run lint
             - name: "Prettier"
               run: npm run prettier
-
-        env:
-            VITE_CLIEN_ID: ${{ secrets.VITE_CLIEN_ID }}

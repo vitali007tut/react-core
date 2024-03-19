@@ -36,6 +36,9 @@ jobs:
                   name: production-files
                   path: ./dist
 
+        env:
+          VITE_CLIEN_ID: ${{ secrets.VITE_CLIEN_ID }}
+
     deploy:
         name: Deploy
         needs: build
@@ -74,3 +77,6 @@ jobs:
               run: npm run lint
             - name: "Prettier"
               run: npm run prettier
+
+        env:
+          VITE_CLIEN_ID: ${{ secrets.VITE_CLIEN_ID }}

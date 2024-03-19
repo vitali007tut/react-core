@@ -74,4 +74,4 @@ jobs:
               run: npm run prettier
 
         env:
-          VITE_CLIEN_ID: ${{ secrets.VITE_CLIEN_ID }}
+            VITE_CLIEN_ID: ${{ secrets.VITE_CLIEN_ID }}

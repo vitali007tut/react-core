@@ -1,11 +1,11 @@
 import HistoryCard from "../../components/HistoryCard/HistoryCard";
 import { getHistoryArray } from "../../hooks/lsService";
-import { useArrayUsersSelector } from "../../hooks/redux";
+import { useTypedSelector } from "../../hooks/redux";
 import s from "./HistoryPage.module.css";
 
 function HistoryPage() {
     let history: string[] = [];
-    const users = useArrayUsersSelector((state) => state.arrayUsers);
+    const users = useTypedSelector((state) => state.arrayUsers);
     history = getHistoryArray(users);
 
     return (

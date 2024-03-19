@@ -3,7 +3,7 @@ import { useGetPhotoQuery } from "../../store/unsplash/unsplach.api";
 import { Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { useArrayUsersSelector, useTypedSelector } from "../../hooks/redux";
+import { useTypedSelector } from "../../hooks/redux";
 import { IPhoto } from "../../models/models";
 import { getFavoritesArray } from "../../hooks/lsService";
 import { useState } from "react";
@@ -15,7 +15,7 @@ export default function DetailsPage() {
     const { addFavToCurrentUser, removeFavFromCurrentUser } = useActions();
     const { isAuth } = useTypedSelector((state) => state.userAuth);
     let favorites: IPhoto[] = [];
-    const users = useArrayUsersSelector((state) => state.arrayUsers);
+    const users = useTypedSelector((state) => state.arrayUsers);
     favorites = getFavoritesArray(users);
     const [isFavorite, setIsFavorite] = useState(favorites.map((e) => e.id).includes(id || ""));
     const { isLoading, data } = useGetPhotoQuery(id || "");

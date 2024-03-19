@@ -9,13 +9,11 @@ import FavoritesPage from "./pages/FavoritesPage/FavoritesPage.tsx";
 import DetailsPage from "./pages/DetailsPage/DetailsPage.tsx";
 
 function App() {
-    // const logined = localStorage.getItem('logined') || ''
 
     return (
         <BrowserRouter>
             <div className={s.container}>
                 <Header />
-                {/* <div className={s.itemsContainer}> */}
                 <Routes>
                     <Route path="react-core/" element={<MainPage />} />
                     <Route path="react-core/login" element={<LoginPage />} />
@@ -24,7 +22,6 @@ function App() {
                     <Route path="react-core/history" element={<HistoryPage />} />
                     <Route path="react-core/details/:id" element={<DetailsPage />} />
                 </Routes>
-                {/* </div> */}
             </div>
         </BrowserRouter>
     );

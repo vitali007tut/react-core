@@ -10,7 +10,7 @@ function SignUpPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [customerExist, setCustomerExist] = useState(true);
-    const { setAuth, addToArray } = useActions();
+    const { setAuth, addUserToDB } = useActions();
     const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +28,7 @@ function SignUpPage() {
             history: [],
             favorites: [],
         };
-        addToArray(customerData);
+        addUserToDB(customerData);
         navigate("/react-core");
     };
 

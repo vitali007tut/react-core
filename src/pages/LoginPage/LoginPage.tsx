@@ -3,7 +3,7 @@ import s from "./LoginPage.module.css";
 import { Button } from "../../components/Button/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useActions } from "../../hooks/actions";
-import { isCorrectData, isUserExists, setUser } from "../../hooks/lsService.ts";
+import { isCorrectData, isUserExists, setUser } from "../../hooks/lsService";
 
 function LoginPage() {
     const [email, setEmail] = useState("");

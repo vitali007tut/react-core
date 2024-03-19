@@ -2,12 +2,12 @@ import Logo from "../Logo/Logo.tsx";
 import s from "./header.module.css";
 import Logouted from "../Navigation/Logouted/Logouted.tsx";
 import SearchIcon from "@mui/icons-material/Search";
-import { useSearchPhotosQuery } from "../../store/unsplash/unsplach.api.ts";
+import { useSearchPhotosQuery } from "../../store/unsplash/unsplach.api";
 import { useCallback, useEffect, useState } from "react";
 import { IconButton, TextField } from "@mui/material";
-import { useDebounce } from "../../hooks/debounce.ts";
-import { useActions } from "../../hooks/actions.ts";
-import { useTypedSelector } from "../../hooks/redux.ts";
+import { useDebounce } from "../../hooks/debounce";
+import { useActions } from "../../hooks/actions";
+import { useTypedSelector } from "../../hooks/redux";
 import Logined from "../Navigation/Logined/Logined.tsx";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -23,7 +23,7 @@ const Header = () => {
             skip: debounced.length < 3,
         },
     );
-    // const [fetchSearch, { isLoading: isSearchLoadin, data: searchData }] = useLazySearchPhotosQuery();
+
     const { isAuth } = useTypedSelector((state) => state.userAuth);
     const { changeSearch, addSearchToCurrentUser } = useActions();
 

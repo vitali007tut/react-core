@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { setAuthToLs } from "../hooks/lsService";
+import { getAuthStatus, setAuthToLs } from "../hooks/lsService";
 
 interface IAuth {
     isAuth: boolean;
 }
 
 const initialState: IAuth = {
-    isAuth: localStorage.getItem("isAuth") === "true" ? true : false,
+    isAuth: getAuthStatus(),
 };
 
 export const userAuthSlice = createSlice({

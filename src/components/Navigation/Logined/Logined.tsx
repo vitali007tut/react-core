@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import { useActions } from "../../../hooks/actions.ts";
-import { cleareLogin } from "../../../hooks/lsService.ts";
+import { useActions } from "../../../hooks/actions";
+import { cleareLogin } from "../../../hooks/lsService";
 import LogoutIcon from "@mui/icons-material/Logout";
 import s from "./Logined.module.css";
 

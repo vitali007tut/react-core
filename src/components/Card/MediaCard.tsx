@@ -43,7 +43,7 @@ const MediaCard = (props: Props) => {
                 </Typography>
             </CardContent>
             <div className={s.buttons}>
-                <Button href={`/react-core/details/${props.id}`}>Details</Button>
+                <Button href={`/details/${props.id}`}>Details</Button>
                 {props.logined && (
                     <CardActions>
                         <Button

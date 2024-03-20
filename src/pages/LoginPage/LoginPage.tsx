@@ -25,7 +25,7 @@ function LoginPage() {
             setIsUserCorrect(false);
         } else {
             setAuth(true);
-            navigate("/react-core");
+            navigate("/");
             setUser(email);
         }
     };
@@ -60,13 +60,13 @@ function LoginPage() {
             <Button type="submit">Submit</Button>
             {!customerExist && (
                 <p className={s.warning}>
-                    Customer doesn't exist, please <NavLink to="/react-core/signup">signup</NavLink>
+                    Customer doesn't exist, please <NavLink to="/signup">signup</NavLink>
                 </p>
             )}
             {!isUserCorrect && (
                 <p className={s.warning}>
                     Password incorrect, please try one more time or{" "}
-                    <NavLink to="/react-core/signup">signup</NavLink>
+                    <NavLink to="/signup">signup</NavLink>
                 </p>
             )}
         </form>

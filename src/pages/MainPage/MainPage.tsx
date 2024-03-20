@@ -4,11 +4,13 @@ import MediaCard from "../../components/Card/MediaCard";
 import { useTypedSelector } from "../../hooks/redux";
 import { IPhoto } from "../../models/models";
 import { getUserFavorites } from "../../hooks/lsService";
+import { useTheme } from "../../hooks/useTheme";
 
 function MainPage() {
     const { isLoading, data } = useGetPhotosQuery();
     const { search } = useTypedSelector((state) => state.searchUnsplash);
     const { isAuth } = useTypedSelector((state) => state.userAuth);
+    const { theme } = useTheme();
     let favorites: IPhoto[] = [];
     const users = useTypedSelector((state) => state.arrayUsers);
     favorites = getUserFavorites(users);
@@ -23,9 +25,11 @@ function MainPage() {
         },
     );
 
+    const color = theme === "light" ? "black" : "";
+
     return (
         <>
-            <ul className={s.listImg}>
+            <ul className={s.listImg} style={{ background: color }}>
                 {isSearchLoading && <p className="text-center">Search loading...</p>}
                 {searchData?.length === 0 && (
                     <p style={{ textAlign: "center", fontSize: "1.5rem" }}>

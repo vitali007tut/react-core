@@ -15,7 +15,7 @@ function Logined() {
 
     return (
         <div className={s.buttons}>
-            <NavLink to="/react-core/">
+            <NavLink to="/">
                 <Button
                     variant="contained"
                     onClick={handleLogout}
@@ -24,10 +24,10 @@ function Logined() {
                     <LogoutIcon />
                 </Button>
             </NavLink>
-            <NavLink to="/react-core/favorites">
+            <NavLink to="/favorites">
                 <Button variant="contained">Favorites</Button>
             </NavLink>
-            <NavLink to="/react-core/history">
+            <NavLink to="/history">
                 <Button variant="contained">History</Button>
             </NavLink>
         </div>

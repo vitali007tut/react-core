@@ -11,17 +11,17 @@ import { ErrorBoundary } from "react-error-boundary";
 
 function App() {
     return (
-        <ErrorBoundary fallback={<div>Something went wrong</div>}>
+        <ErrorBoundary fallback={<div>ErrorBoundary: Something went wrong</div>}>
             <BrowserRouter>
                 <div className={s.container}>
                     <Header />
                     <Routes>
-                        <Route path="react-core/" element={<MainPage />} />
-                        <Route path="react-core/login" element={<LoginPage />} />
-                        <Route path="react-core/signup" element={<SignUpPage />} />
-                        <Route path="react-core/favorites" element={<FavoritesPage />} />
-                        <Route path="react-core/history" element={<HistoryPage />} />
-                        <Route path="react-core/details/:id" element={<DetailsPage />} />
+                        <Route path="/" element={<MainPage />} />
+                        <Route path="login" element={<LoginPage />} />
+                        <Route path="signup" element={<SignUpPage />} />
+                        <Route path="favorites" element={<FavoritesPage />} />
+                        <Route path="history" element={<HistoryPage />} />
+                        <Route path="details/:id" element={<DetailsPage />} />
                     </Routes>
                 </div>
             </BrowserRouter>

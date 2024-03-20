@@ -4,17 +4,19 @@ import Logouted from "../Navigation/Logouted/Logouted.tsx";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSearchPhotosQuery } from "../../store/unsplash/unsplach.api";
 import { useCallback, useEffect, useState } from "react";
-import { IconButton, TextField } from "@mui/material";
+import { IconButton, Switch, TextField } from "@mui/material";
 import { useDebounce } from "../../hooks/debounce";
 import { useActions } from "../../hooks/actions";
 import { useTypedSelector } from "../../hooks/redux";
 import Logined from "../Navigation/Logined/Logined.tsx";
 import { Link, useNavigate } from "react-router-dom";
+import { useTheme } from "../../hooks/useTheme";
 
 const Header = () => {
     const [search, setSearch] = useState("");
     const [dropdown, setDropdown] = useState(false);
     const [isSuggestionsListShow, setIsSuggestionsListShow] = useState<boolean>(false);
+    const { theme, toggleTheme } = useTheme();
     const debounced = useDebounce(search);
     const navigate = useNavigate();
     const { isLoading, isError, data } = useSearchPhotosQuery(
@@ -47,11 +49,13 @@ const Header = () => {
         changeSearch(search);
         setSearch("");
         if (isAuth) addSearchToCurrentUser(search);
-        navigate("/react-core/");
+        navigate("/");
     };
 
+    const color = theme === "light" ? "chocolate" : "burlywood";
+
     return (
-        <div className={s.header}>
+        <div className={s.header} style={{ background: color }}>
             {isError && <p className="errorText">Something went wrong...</p>}
             <Logo />
 
@@ -73,10 +77,7 @@ const Header = () => {
                             {isLoading && <p className="text-center">Loading...</p>}
                             {data?.map((item) => (
                                 <li key={item.id} className={s.dropCard}>
-                                    <Link
-                                        to={`/react-core/details/${item.id}`}
-                                        className={s.linkItem}
-                                    >
+                                    <Link to={`details/${item.id}`} className={s.linkItem}>
                                         <img className={s.dropDownImg} src={item.urls.thumb}></img>
                                     </Link>
                                 </li>
@@ -89,6 +90,7 @@ const Header = () => {
                 </div>
             </form>
             {isAuth ? <Logined /> : <Logouted />}
+            <Switch defaultChecked onChange={toggleTheme} />
         </div>
     );
 };

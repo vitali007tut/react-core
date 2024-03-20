@@ -58,22 +58,20 @@ export function setUser(login: string): void {
     localStorage.setItem("authLogin", login);
 }
 
-export function getFavoritesArray(users: IUser[]): IPhoto[] {
-    let favorites: IPhoto[] = [];
+export function getUserFavorites(users: IUser[]): IPhoto[] {
     const login = receaveLogin();
     const user: IUser | undefined = users.find((user) => user.email === login);
-    if (user) favorites = [...user.favorites];
+    if (user) return user.favorites;
 
-    return favorites;
+    return [];
 }
 
-export function getHistoryArray(users: IUser[]): string[] {
-    let history: string[] = [];
+export function getUserHistory(users: IUser[]): string[] {
     const login = receaveLogin();
     const user: IUser | undefined = users.find((user) => user.email === login);
-    if (user) history = [...user.history];
+    if (user) return user.history;
 
-    return history;
+    return [];
 }
 
 export function setAuthToLs(value: string) {

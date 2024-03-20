@@ -1,12 +1,12 @@
 import HistoryCard from "../../components/HistoryCard/HistoryCard";
-import { getHistoryArray } from "../../hooks/lsService";
+import { getUserHistory } from "../../hooks/lsService";
 import { useTypedSelector } from "../../hooks/redux";
 import s from "./HistoryPage.module.css";
 
 function HistoryPage() {
     let history: string[] = [];
     const users = useTypedSelector((state) => state.arrayUsers);
-    history = getHistoryArray(users);
+    history = getUserHistory(users);
 
     return (
         <>

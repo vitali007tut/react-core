@@ -33,6 +33,8 @@ jobs:
               with:
                   name: production-files
                   path: ./dist
+              env:
+                  VITE_CLIEN_ID: ${{ secrets.VITE_CLIEN_ID }}
 
     deploy:
         name: Deploy

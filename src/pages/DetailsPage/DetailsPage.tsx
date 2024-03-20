@@ -5,7 +5,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useTypedSelector } from "../../hooks/redux";
 import { IPhoto } from "../../models/models";
-import { getFavoritesArray } from "../../hooks/lsService";
+import { getUserFavorites } from "../../hooks/lsService";
 import { useState } from "react";
 import { useActions } from "../../hooks/actions";
 import s from "./DetailsPage.module.css";
@@ -16,7 +16,7 @@ export default function DetailsPage() {
     const { isAuth } = useTypedSelector((state) => state.userAuth);
     let favorites: IPhoto[] = [];
     const users = useTypedSelector((state) => state.arrayUsers);
-    favorites = getFavoritesArray(users);
+    favorites = getUserFavorites(users);
     const [isFavorite, setIsFavorite] = useState(favorites.map((e) => e.id).includes(id || ""));
     const { isLoading, data } = useGetPhotoQuery(id || "");
 

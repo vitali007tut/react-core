@@ -3,7 +3,7 @@ import { useGetPhotosQuery, useSearchPhotosQuery } from "../../store/unsplash/un
 import MediaCard from "../../components/Card/MediaCard";
 import { useTypedSelector } from "../../hooks/redux";
 import { IPhoto } from "../../models/models";
-import { getFavoritesArray } from "../../hooks/lsService";
+import { getUserFavorites } from "../../hooks/lsService";
 
 function MainPage() {
     const { isLoading, data } = useGetPhotosQuery();
@@ -11,7 +11,7 @@ function MainPage() {
     const { isAuth } = useTypedSelector((state) => state.userAuth);
     let favorites: IPhoto[] = [];
     const users = useTypedSelector((state) => state.arrayUsers);
-    favorites = getFavoritesArray(users);
+    favorites = getUserFavorites(users);
 
     const { isLoading: isSearchLoading, data: searchData } = useSearchPhotosQuery(
         {

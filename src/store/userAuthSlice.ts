@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { getAuthStatus, setAuthToLs } from "../hooks/lsService";
 
 interface IAuth {
     isAuth: boolean;
 }
 
 const initialState: IAuth = {
-    isAuth: localStorage.getItem("isAuth") === "true" ? true : false,
+    isAuth: getAuthStatus(),
 };
 
 export const userAuthSlice = createSlice({
@@ -14,7 +15,7 @@ export const userAuthSlice = createSlice({
     reducers: {
         setAuth(state, action: PayloadAction<boolean>) {
             state.isAuth = action.payload;
-            localStorage.setItem("isAuth", state.isAuth.toString());
+            setAuthToLs(state.isAuth.toString());
         },
     },
 });

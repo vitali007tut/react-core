@@ -1,0 +1,30 @@
+.container {
+    margin: 20px auto;
+    width: 90%;
+    display: flex;
+    gap: 20px;
+    background: aliceblue;
+    border-radius: 10px;
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+img {
+    width: 40%;
+    height: auto;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.description {
+    width: 35%;
+    margin: 15px auto;
+}
+
+.description * {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    color: rgb(25, 118, 210);
+}

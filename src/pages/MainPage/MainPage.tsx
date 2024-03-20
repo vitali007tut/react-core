@@ -1,17 +1,17 @@
 import s from "./MainPage.module.css";
 import { useGetPhotosQuery, useSearchPhotosQuery } from "../../store/unsplash/unsplach.api";
 import MediaCard from "../../components/Card/MediaCard";
-import { useAuthSelector, useSearchSelector, useArrayUsersSelector } from "../../hooks/redux";
+import { useTypedSelector } from "../../hooks/redux";
 import { IPhoto } from "../../models/models";
-import { getFavoritesArray } from "../../hooks/lsService";
+import { getUserFavorites } from "../../hooks/lsService";
 
 function MainPage() {
     const { isLoading, data } = useGetPhotosQuery();
-    const { search } = useSearchSelector((state) => state.searchUnsplash);
-    const { isAuth } = useAuthSelector((state) => state.userAuth);
+    const { search } = useTypedSelector((state) => state.searchUnsplash);
+    const { isAuth } = useTypedSelector((state) => state.userAuth);
     let favorites: IPhoto[] = [];
-    const users = useArrayUsersSelector((state) => state.arrayUsers);
-    favorites = getFavoritesArray(users);
+    const users = useTypedSelector((state) => state.arrayUsers);
+    favorites = getUserFavorites(users);
 
     const { isLoading: isSearchLoading, data: searchData } = useSearchPhotosQuery(
         {
@@ -27,6 +27,11 @@ function MainPage() {
         <>
             <ul className={s.listImg}>
                 {isSearchLoading && <p className="text-center">Search loading...</p>}
+                {searchData?.length === 0 && (
+                    <p style={{ textAlign: "center", fontSize: "1.5rem" }}>
+                        No search results with word: <span style={{ color: "red" }}>{search}</span>
+                    </p>
+                )}
                 {searchData?.map((item) => (
                     <li key={item.id} className={s.liItem}>
                         <MediaCard

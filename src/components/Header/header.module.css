@@ -18,7 +18,7 @@
     min-width: 220px;
     background-color: burlywood;
     list-style: none;
-    top: 70px;
+    top: 85px;
     box-shadow:
         rgba(0, 0, 0, 0.25) 0px 54px 55px,
         rgba(0, 0, 0, 0.12) 0px -12px 30px,
@@ -29,20 +29,20 @@
 }
 
 .dropDownImg {
-    height: 100px;
+    margin: 0 auto;
 }
 
 .dropCard {
     cursor: pointer;
     border-radius: 5px;
     border: 1px solid darkgrey;
-    display: flex;
-    justify-content: center;
+    opacity: 0.8;
 }
 
 .dropCard:hover {
-    background-color: darkgray;
+    opacity: 1;
 }
 
-.buttonIcon {
+.linkItem {
+    display: flex;
 }

@@ -2,14 +2,14 @@ import Logo from "../Logo/Logo.tsx";
 import s from "./header.module.css";
 import Logouted from "../Navigation/Logouted/Logouted.tsx";
 import SearchIcon from "@mui/icons-material/Search";
-import { useSearchPhotosQuery } from "../../store/unsplash/unsplach.api.ts";
+import { useSearchPhotosQuery } from "../../store/unsplash/unsplach.api";
 import { useCallback, useEffect, useState } from "react";
 import { IconButton, TextField } from "@mui/material";
-import { useDebounce } from "../../hooks/debounce.ts";
-import { useActions } from "../../hooks/actions.ts";
-import { useAuthSelector } from "../../hooks/redux.ts";
+import { useDebounce } from "../../hooks/debounce";
+import { useActions } from "../../hooks/actions";
+import { useTypedSelector } from "../../hooks/redux";
 import Logined from "../Navigation/Logined/Logined.tsx";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
     const [search, setSearch] = useState("");
@@ -23,8 +23,8 @@ const Header = () => {
             skip: debounced.length < 3,
         },
     );
-    // const [fetchSearch, { isLoading: isSearchLoadin, data: searchData }] = useLazySearchPhotosQuery();
-    const { isAuth } = useAuthSelector((state) => state.userAuth);
+
+    const { isAuth } = useTypedSelector((state) => state.userAuth);
     const { changeSearch, addSearchToCurrentUser } = useActions();
 
     const handleFocus = useCallback(() => {
@@ -40,10 +40,6 @@ const Header = () => {
     useEffect(() => {
         setDropdown(debounced.length >= 3);
     }, [debounced, data]);
-
-    const clickHandler = (id: string) => {
-        console.log(id);
-    };
 
     const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -76,12 +72,13 @@ const Header = () => {
                         <ul className={s.dropDownArea}>
                             {isLoading && <p className="text-center">Loading...</p>}
                             {data?.map((item) => (
-                                <li
-                                    key={item.id}
-                                    className={s.dropCard}
-                                    onClick={() => clickHandler(item.id)}
-                                >
-                                    <img className={s.dropDownImg} src={item.urls.thumb}></img>
+                                <li key={item.id} className={s.dropCard}>
+                                    <Link
+                                        to={`/react-core/details/${item.id}`}
+                                        className={s.linkItem}
+                                    >
+                                        <img className={s.dropDownImg} src={item.urls.thumb}></img>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

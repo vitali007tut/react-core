@@ -2,15 +2,15 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button/Button";
 import s from "./SignUpPage.module.css";
 import { useState } from "react";
-import { useActions } from "../../hooks/actions.ts";
-import { IUser } from "../../models/models.ts";
-import { isUserExists } from "../../hooks/lsService.ts";
+import { useActions } from "../../hooks/actions";
+import { IUser } from "../../models/models";
+import { isUserExists } from "../../hooks/lsService";
 
 function SignUpPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [customerExist, setCustomerExist] = useState(true);
-    const { setAuth, addToArray } = useActions();
+    const { setAuth, addUserToDB } = useActions();
     const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +28,7 @@ function SignUpPage() {
             history: [],
             favorites: [],
         };
-        addToArray(customerData);
+        addUserToDB(customerData);
         navigate("/react-core");
     };
 

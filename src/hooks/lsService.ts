@@ -19,9 +19,7 @@ export function isCorrectData(email: string, password: string) {
 }
 
 export function receaveUserfromLs(email: string): IUser {
-    // if (!localStorage.getItem('arrayUsers')) return false
     const usersLs: IUser[] = JSON.parse(localStorage.getItem("arrayUsers") || "");
-    // if (!usersLs.length) return false;
     const userInArray: IUser[] = usersLs.filter((userLs) => userLs.email === email);
     return userInArray[0];
 }
@@ -60,26 +58,46 @@ export function setUser(login: string): void {
     localStorage.setItem("authLogin", login);
 }
 
-export function getFavoritesArray(users: IUser[]): IPhoto[] {
-    let favorites: IPhoto[] = [];
+export function getUserFavorites(users: IUser[]): IPhoto[] {
     const login = receaveLogin();
-    users.forEach((user) => {
-        if (user.email === login) {
-            favorites = [...user.favorites];
-        }
-    });
+    const user: IUser | undefined = users.find((user) => user.email === login);
+    if (user) return user.favorites;
 
-    return favorites;
+    return [];
 }
 
-export function getHistoryArray(users: IUser[]): string[] {
-    let history: string[] = [];
+export function getUserHistory(users: IUser[]): string[] {
     const login = receaveLogin();
-    users.forEach((user) => {
-        if (user.email === login) {
-            history = [...user.history];
-        }
-    });
+    const user: IUser | undefined = users.find((user) => user.email === login);
+    if (user) return user.history;
 
-    return history;
+    return [];
+}
+
+export function setAuthToLs(value: string) {
+    localStorage.setItem("isAuth", value);
+}
+
+export function getAuthStatus(): boolean {
+    return localStorage.getItem("isAuth") === "true" ? true : false;
+}
+
+export function setSearchWord(value: string): void {
+    localStorage.setItem("Search word", value);
+}
+
+export function getSearchWord(): string {
+    return localStorage.getItem("Search word") || "";
+}
+
+export function getUsersFromDB(): IUser[] {
+    return JSON.parse(localStorage.getItem("arrayUsers") || "[]");
+}
+
+export function setUsersToLs(value: IUser[]): void {
+    localStorage.setItem("arrayUsers", JSON.stringify(value));
+}
+
+export function setAuthLoginToLs(value: string): void {
+    localStorage.setItem("authLogin", value);
 }

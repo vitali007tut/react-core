@@ -1,14 +1,14 @@
 import MediaCard from "../../components/Card/MediaCard";
-import { useAuthSelector, useArrayUsersSelector } from "../../hooks/redux";
+import { useTypedSelector } from "../../hooks/redux";
 import s from "./FavoritesPage.module.css";
 import { IPhoto } from "../../models/models";
-import { getFavoritesArray } from "../../hooks/lsService";
+import { getUserFavorites } from "../../hooks/lsService";
 
 function FavoritesPage() {
-    const { isAuth } = useAuthSelector((state) => state.userAuth);
+    const { isAuth } = useTypedSelector((state) => state.userAuth);
     let favorites: IPhoto[] = [];
-    const users = useArrayUsersSelector((state) => state.arrayUsers);
-    favorites = getFavoritesArray(users);
+    const users = useTypedSelector((state) => state.arrayUsers);
+    favorites = getUserFavorites(users);
 
     return (
         <>

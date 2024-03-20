@@ -1,17 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IPhoto, IUser } from "../models/models.ts";
-import { receaveLogin } from "../hooks/lsService.ts";
+import { IPhoto, IUser } from "../models/models";
+import { getUsersFromDB, receaveLogin, setAuthLoginToLs, setUsersToLs } from "../hooks/lsService";
 
-const initialState: IUser[] = JSON.parse(localStorage.getItem("arrayUsers") || "[]");
+const initialState: IUser[] = getUsersFromDB();
 
 export const arrayUsersSlice = createSlice({
     name: "users",
     initialState,
     reducers: {
-        addToArray(state, action: PayloadAction<IUser>) {
+        addUserToDB(state, action: PayloadAction<IUser>) {
             state.push(action.payload);
-            localStorage.setItem("arrayUsers", JSON.stringify(state));
-            localStorage.setItem("authLogin", action.payload.email);
+            setUsersToLs(state);
+            setAuthLoginToLs(action.payload.email);
         },
         addFavToCurrentUser(state, action: PayloadAction<IPhoto>) {
             const login = receaveLogin();
@@ -20,7 +20,7 @@ export const arrayUsersSlice = createSlice({
                     e.favorites.push(action.payload);
                 }
             });
-            localStorage.setItem("arrayUsers", JSON.stringify(state));
+            setUsersToLs(state);
         },
         removeFavFromCurrentUser(state, action: PayloadAction<IPhoto>) {
             const login = receaveLogin();
@@ -29,7 +29,7 @@ export const arrayUsersSlice = createSlice({
                     e.favorites = e.favorites.filter((item) => item.id !== action.payload.id);
                 }
             });
-            localStorage.setItem("arrayUsers", JSON.stringify(state));
+            setUsersToLs(state);
         },
         addSearchToCurrentUser(state, action: PayloadAction<string>) {
             const login = receaveLogin();
@@ -40,7 +40,7 @@ export const arrayUsersSlice = createSlice({
                     }
                 }
             });
-            localStorage.setItem("arrayUsers", JSON.stringify(state));
+            setUsersToLs(state);
         },
         removeSearchFromCurrentUser(state, action: PayloadAction<string>) {
             const login = receaveLogin();
@@ -49,7 +49,7 @@ export const arrayUsersSlice = createSlice({
                     e.history = e.history.filter((item) => item !== action.payload);
                 }
             });
-            localStorage.setItem("arrayUsers", JSON.stringify(state));
+            setUsersToLs(state);
         },
     },
 });

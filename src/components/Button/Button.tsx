@@ -1,4 +1,3 @@
-// import React from 'react';
 import { FC } from "react";
 import { Button as ButtonMUI } from "@mui/material";
 import type { ButtonProps as ButtonMUIProps } from "@mui/material";

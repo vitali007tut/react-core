@@ -3,7 +3,7 @@ import s from "./LoginPage.module.css";
 import { Button } from "../../components/Button/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useActions } from "../../hooks/actions";
-import { isCorrectData, isUserExists, setUser } from "../../hooks/lsService.ts";
+import { isCorrectData, isUserExists, setUser } from "../../hooks/lsService";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
@@ -28,37 +28,6 @@ function LoginPage() {
             navigate("/react-core");
             setUser(email);
         }
-
-        //**! */
-        // let usersLS: IUser[] = [];
-        // if (localStorage.getItem("appUsers")) {
-        //     usersLS = JSON.parse(localStorage.getItem("appUsers") || "");
-        // }
-        // if (usersLS) {
-        //     setCustomerExist(false);
-        // }
-        // usersLS.forEach((user) => {
-        //     if (user.email === email && user.password === password) {
-        //         localStorage.setItem("LoginedUser", JSON.stringify(user));
-        //         addLoginedUser(user)
-        //         setAuth(true);
-        //         navigate("/react-core");
-        //     }
-        // });
-
-        // setEmail("");
-        // setPassword("");
-        // const customerData = {
-        //     email,
-        //     password,
-        //     history: [],
-        //     favorites: [],
-        // };
-        // if (!localStorage.getItem("appUsers")) {
-        //     setCustomerExist(false);
-        // }
-
-        // localStorage.setItem("storeData", JSON.stringify(dataArray));
     };
 
     return (

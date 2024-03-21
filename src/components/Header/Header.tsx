@@ -49,7 +49,7 @@ const Header = () => {
         changeSearch(search);
         setSearch("");
         if (isAuth) addSearchToCurrentUser(search);
-        navigate("/");
+        navigate(`/?query=${search}`);
     };
 
     const color = theme === "light" ? "chocolate" : "burlywood";

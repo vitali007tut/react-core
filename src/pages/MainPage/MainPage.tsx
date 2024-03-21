@@ -51,7 +51,7 @@ function MainPage() {
             </ul>
 
             {search.length < 3 && (
-                <ul className={s.listImg}>
+                <ul className={s.listImg} style={{ background: color }}>
                     {isLoading && <p className="text-center">Loading...</p>}
                     {data?.map((item) => (
                         <li key={item.id} className={s.liItem}>

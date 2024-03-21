@@ -13,7 +13,7 @@
 
 -   Реализованы **Требования к функциональности**
 
--   Для хранения учетных записей пользователей, их Избранного и Истории поиска, используем **LocalStorage**
+-   Для хранения учетных записей пользователей, их Избранного и Истории поиска, используется **LocalStorage**
 
 **React**
 
@@ -26,7 +26,11 @@
 - Есть хотя бы один [**кастомный хук**](https://github.com/vitali007tut/react-core/blob/develop/src/hooks/useTheme.ts)
 - Хотя бы несколько компонентов используют **PropTypes** [**тут**](https://github.com/vitali007tut/react-core/blob/main/src/components/HistoryCard/HistoryCard.tsx) и [**тут**](https://github.com/vitali007tut/react-core/blob/main/src/components/Card/MediaCard.tsx)
 - Поиск не должен триггерить много запросов к серверу [**debounce**](https://github.com/vitali007tut/react-core/blob/main/src/hooks/debounce.ts)
+- Есть применение [**lazy + Suspense**](https://github.com/vitali007tut/react-core/blob/main/src/App.tsx)
 
 **Redux**
+- Используем [**Modern Redux with Redux Toolkit**](https://github.com/vitali007tut/react-core/blob/main/src/store/store.ts)
+- Используем [**слайсы**](https://github.com/vitali007tut/react-core/blob/main/src/store/userAuthSlice.ts)
+- 
 
 ### **2 уровень (необязательный)**

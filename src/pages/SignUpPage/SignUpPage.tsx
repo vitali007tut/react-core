@@ -29,7 +29,7 @@ function SignUpPage() {
             favorites: [],
         };
         addUserToDB(customerData);
-        navigate("/react-core");
+        navigate("/");
     };
 
     return (
@@ -60,7 +60,7 @@ function SignUpPage() {
             <Button type="submit">Submit</Button>
             {!customerExist && (
                 <p className={s.warning}>
-                    Customer exists, please <NavLink to="/react-core/login">login</NavLink>
+                    Customer exists, please <NavLink to="/login">login</NavLink>
                 </p>
             )}
         </form>

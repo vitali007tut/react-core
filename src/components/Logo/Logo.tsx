@@ -4,7 +4,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 
 const Logo = () => {
     return (
-        <Link className={s.logoText} to="/react-core/">
+        <Link className={s.logoText} to="/">
             <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
             LOGO
         </Link>

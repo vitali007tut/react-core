@@ -7,31 +7,31 @@
 -   API: [Unsplash](https://unsplash.com/documentation)
 -   Deploy: [link](https://vitali007tut.github.io/react-core/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Реализованные требования:
 
-Currently, two official plugins are available:
+### **1 уровень (обязательный - необходимый минимум)**
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   Реализованы **Требования к функциональности**
 
-## Expanding the ESLint configuration
+-   Для хранения учетных записей пользователей, их Избранного и Истории поиска, используется **LocalStorage**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**React**
 
--   Configure the top-level `parserOptions` property like this:
+-   **Функциональные компоненты c хуками** в приоритете над классовыми
+-   Есть разделение на **[глупые](https://github.com/vitali007tut/react-core/blob/main/src/components/Logo/Logo.tsx)** и **[умные](https://github.com/vitali007tut/react-core/blob/main/src/components/Header/Header.tsx)** компоненты
+-   Есть [**рендеринг списков**](https://github.com/vitali007tut/react-core/blob/main/src/pages/HistoryPage/HistoryPage.tsx)
+-   Реализована хотя бы одна [**форма**](https://github.com/vitali007tut/react-core/blob/main/src/pages/LoginPage/LoginPage.tsx)
+-   Есть применение [**Контекст API**](https://github.com/vitali007tut/react-core/blob/develop/src/hooks/themeContext.tsx)
+-   Есть применение [**предохранителя**](https://github.com/vitali007tut/react-core/blob/main/src/App.tsx)
+-   Есть хотя бы один [**кастомный хук**](https://github.com/vitali007tut/react-core/blob/develop/src/hooks/useTheme.ts)
+-   Хотя бы несколько компонентов используют **PropTypes** [**тут**](https://github.com/vitali007tut/react-core/blob/main/src/components/HistoryCard/HistoryCard.tsx) и [**тут**](https://github.com/vitali007tut/react-core/blob/main/src/components/Card/MediaCard.tsx)
+-   Поиск не должен триггерить много запросов к серверу [**debounce**](https://github.com/vitali007tut/react-core/blob/main/src/hooks/debounce.ts)
+-   Есть применение [**lazy + Suspense**](https://github.com/vitali007tut/react-core/blob/main/src/App.tsx)
 
-```js
-export default {
-    // other rules...
-    parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module",
-        project: ["./tsconfig.json", "./tsconfig.node.json"],
-        tsconfigRootDir: __dirname,
-    },
-};
-```
+**Redux**
 
--   Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
--   Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
--   Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+-   Используем [**Modern Redux with Redux Toolkit**](https://github.com/vitali007tut/react-core/blob/main/src/store/store.ts)
+-   Используем [**слайсы**](https://github.com/vitali007tut/react-core/blob/main/src/store/userAuthSlice.ts)
+-
+
+### **2 уровень (необязательный)**

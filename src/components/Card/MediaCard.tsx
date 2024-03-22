@@ -10,6 +10,7 @@ import { IPhoto } from "../../models/models";
 import s from "./MediaCard.module.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import PropTypes from "prop-types";
 
 type Props = {
     item: IPhoto;
@@ -43,7 +44,7 @@ const MediaCard = (props: Props) => {
                 </Typography>
             </CardContent>
             <div className={s.buttons}>
-                <Button href={`/react-core/details/${props.id}`}>Details</Button>
+                <Button href={`/details/${props.id}`}>Details</Button>
                 {props.logined && (
                     <CardActions>
                         <Button
@@ -62,3 +63,12 @@ const MediaCard = (props: Props) => {
 };
 
 export default MediaCard;
+
+MediaCard.propTypes = {
+    item: PropTypes.object,
+    id: PropTypes.string,
+    description: PropTypes.string,
+    url: PropTypes.string,
+    logined: PropTypes.bool,
+    favorite: PropTypes.bool,
+};

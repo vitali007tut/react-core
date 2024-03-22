@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useActions } from "../../hooks/actions";
 import s from "./HistoryCard.module.css";
 import DeleteIcon from "@mui/icons-material/Delete";
+import PropTypes from "prop-types";
 
 type Props = {
     item: string;
@@ -18,7 +19,7 @@ export default function HistoryCard(props: Props) {
     const searchHandler = (event: React.SyntheticEvent<HTMLElement>) => {
         event.preventDefault();
         changeSearch(props.item);
-        navigate("/react-core/");
+        navigate("/");
     };
 
     return (
@@ -30,3 +31,7 @@ export default function HistoryCard(props: Props) {
         </div>
     );
 }
+
+HistoryCard.propTypes = {
+    item: PropTypes.string,
+};

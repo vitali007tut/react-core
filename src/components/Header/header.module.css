@@ -3,7 +3,15 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    /* background: burlywood; */
+}
+
+.light {
     background: burlywood;
+}
+
+.dark {
+    background: rgb(59, 44, 23);
 }
 
 .searchArea {

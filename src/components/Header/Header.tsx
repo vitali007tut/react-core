@@ -11,6 +11,7 @@ import { useTypedSelector } from "../../hooks/redux";
 import Logined from "../Navigation/Logined/Logined.tsx";
 import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "../../hooks/useTheme";
+import { Toaster } from "react-hot-toast";
 
 const Header = () => {
     const [search, setSearch] = useState("");
@@ -91,6 +92,7 @@ const Header = () => {
             </form>
             {isAuth ? <Logined /> : <Logouted />}
             <Switch defaultChecked onChange={toggleTheme} />
+            <Toaster />
         </div>
     );
 };

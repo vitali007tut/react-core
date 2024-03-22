@@ -3,7 +3,7 @@ import { Suspense, lazy } from "react";
 import s from "./App.module.css";
 import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage/MainPage";
-const DetailsPage = lazy(() => import('./pages/DetailsPage/DetailsPage'))
+const DetailsPage = lazy(() => import("./pages/DetailsPage/DetailsPage"));
 const FavoritesPage = lazy(() => import("./pages/FavoritesPage/FavoritesPage"));
 const HistoryPage = lazy(() => import("./pages/HistoryPage/HistoryPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));

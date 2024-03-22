@@ -12,7 +12,8 @@ const store = configureStore({
         userAuth: userAuthReducer,
         arrayUsers: arrayUsersReducer,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(unsplashApi.middleware).concat(userAuthMiddleware.middleware),
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(unsplashApi.middleware).concat(userAuthMiddleware.middleware),
 });
 
 export default store;

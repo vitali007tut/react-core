@@ -21,16 +21,17 @@
 -   Есть разделение на **[глупые](https://github.com/vitali007tut/react-core/blob/main/src/components/Logo/Logo.tsx)** и **[умные](https://github.com/vitali007tut/react-core/blob/main/src/components/Header/Header.tsx)** компоненты
 -   Есть [**рендеринг списков**](https://github.com/vitali007tut/react-core/blob/main/src/pages/HistoryPage/HistoryPage.tsx)
 -   Реализована хотя бы одна [**форма**](https://github.com/vitali007tut/react-core/blob/main/src/pages/LoginPage/LoginPage.tsx)
-- Есть применение [**Контекст API**](https://github.com/vitali007tut/react-core/blob/develop/src/hooks/themeContext.tsx)
-- Есть применение [**предохранителя**](https://github.com/vitali007tut/react-core/blob/main/src/App.tsx)
-- Есть хотя бы один [**кастомный хук**](https://github.com/vitali007tut/react-core/blob/develop/src/hooks/useTheme.ts)
-- Хотя бы несколько компонентов используют **PropTypes** [**тут**](https://github.com/vitali007tut/react-core/blob/main/src/components/HistoryCard/HistoryCard.tsx) и [**тут**](https://github.com/vitali007tut/react-core/blob/main/src/components/Card/MediaCard.tsx)
-- Поиск не должен триггерить много запросов к серверу [**debounce**](https://github.com/vitali007tut/react-core/blob/main/src/hooks/debounce.ts)
-- Есть применение [**lazy + Suspense**](https://github.com/vitali007tut/react-core/blob/main/src/App.tsx)
+-   Есть применение [**Контекст API**](https://github.com/vitali007tut/react-core/blob/develop/src/hooks/themeContext.tsx)
+-   Есть применение [**предохранителя**](https://github.com/vitali007tut/react-core/blob/main/src/App.tsx)
+-   Есть хотя бы один [**кастомный хук**](https://github.com/vitali007tut/react-core/blob/develop/src/hooks/useTheme.ts)
+-   Хотя бы несколько компонентов используют **PropTypes** [**тут**](https://github.com/vitali007tut/react-core/blob/main/src/components/HistoryCard/HistoryCard.tsx) и [**тут**](https://github.com/vitali007tut/react-core/blob/main/src/components/Card/MediaCard.tsx)
+-   Поиск не должен триггерить много запросов к серверу [**debounce**](https://github.com/vitali007tut/react-core/blob/main/src/hooks/debounce.ts)
+-   Есть применение [**lazy + Suspense**](https://github.com/vitali007tut/react-core/blob/main/src/App.tsx)
 
 **Redux**
-- Используем [**Modern Redux with Redux Toolkit**](https://github.com/vitali007tut/react-core/blob/main/src/store/store.ts)
-- Используем [**слайсы**](https://github.com/vitali007tut/react-core/blob/main/src/store/userAuthSlice.ts)
-- 
+
+-   Используем [**Modern Redux with Redux Toolkit**](https://github.com/vitali007tut/react-core/blob/main/src/store/store.ts)
+-   Используем [**слайсы**](https://github.com/vitali007tut/react-core/blob/main/src/store/userAuthSlice.ts)
+-
 
 ### **2 уровень (необязательный)**

@@ -3,7 +3,7 @@ import s from "./header.module.css";
 import Logouted from "../Navigation/Logouted/Logouted.tsx";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSearchPhotosQuery } from "../../store/unsplash/unsplach.api";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { IconButton, Switch, TextField } from "@mui/material";
 import { useDebounce } from "../../hooks/debounce";
 import { useActions } from "../../hooks/actions";
@@ -15,7 +15,7 @@ import { Toaster } from "react-hot-toast";
 
 const Header = () => {
     const [search, setSearch] = useState("");
-    const [dropdown, setDropdown] = useState(false);
+    const [dropdown, setDropdown] = useState(true);
     const [isSuggestionsListShow, setIsSuggestionsListShow] = useState<boolean>(false);
     const { theme, toggleTheme } = useTheme();
     const debounced = useDebounce(search);
@@ -40,10 +40,6 @@ const Header = () => {
         }, 300);
     }, []);
 
-    useEffect(() => {
-        setDropdown(debounced.length >= 3);
-    }, [debounced, data]);
-
     const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setDropdown(false);
@@ -52,6 +48,10 @@ const Header = () => {
         if (isAuth) addSearchToCurrentUser(search);
         navigate(`/?query=${search}`);
     };
+
+    const thumbHandle = () => {
+        setSearch("");
+    }
 
     const color = theme === "light" ? "chocolate" : "burlywood";
 
@@ -72,17 +72,27 @@ const Header = () => {
                         onChange={(e) => setSearch(e.target.value)}
                         required
                     />
-
                     {dropdown && isSuggestionsListShow && (
                         <ul className={s.dropDownArea}>
-                            {isLoading && <p className="text-center">Loading...</p>}
-                            {data?.map((item) => (
-                                <li key={item.id} className={s.dropCard}>
-                                    <Link to={`details/${item.id}`} className={s.linkItem}>
-                                        <img className={s.dropDownImg} src={item.urls.thumb}></img>
-                                    </Link>
-                                </li>
-                            ))}
+                            {isLoading && <p style={{ textAlign: "center" }}>Loading...</p>}
+                            {debounced.length < 3 && (
+                                <p style={{ textAlign: "center" }}>Type min 3 letters</p>
+                            )}
+                            {data?.length === 0 && debounced.length >= 3 && (
+                                <p style={{ textAlign: "center" }}>No results</p>
+                            )}
+                            {debounced.length >= 3 &&
+                                data?.map((item) => (
+                                    <li key={item.id} className={s.dropCard}>
+                                        <Link to={`details/${item.id}`} className={s.linkItem}>
+                                            <img
+                                                className={s.dropDownImg}
+                                                src={item.urls.thumb}
+                                                onClick={thumbHandle}
+                                            ></img>
+                                        </Link>
+                                    </li>
+                                ))}
                         </ul>
                     )}
                     <IconButton type="submit" className={s.buttonIcon}>

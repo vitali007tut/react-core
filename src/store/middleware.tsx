@@ -9,9 +9,9 @@ userAuthMiddleware.startListening({
     actionCreator: userAuthSlice.actions.setAuth,
     effect: (action) => {
         if (action.payload) {
-            toast.success(`User signed in`);
+            toast.success(`Hello customer!`);
         } else {
-            toast.success(`User log out`);
+            toast.success(`Have a good day... bye`);
         }
     },
 });

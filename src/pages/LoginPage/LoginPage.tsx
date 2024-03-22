@@ -1,9 +1,9 @@
 import { useState } from "react";
 import s from "./LoginPage.module.css";
-import { Button } from "../../components/Button/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useActions } from "../../hooks/actions";
 import { isCorrectData, isUserExists, setUser } from "../../hooks/lsService";
+import { Button } from "@mui/material";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
@@ -57,7 +57,9 @@ function LoginPage() {
                 pattern="\D{3,}"
                 required
             />
-            <Button type="submit">Submit</Button>
+            <Button variant="contained" type="submit">
+                Submit
+            </Button>
             {!customerExist && (
                 <p className={s.warning}>
                     Customer doesn't exist, please <NavLink to="/signup">signup</NavLink>

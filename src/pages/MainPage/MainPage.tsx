@@ -5,6 +5,7 @@ import { useTypedSelector } from "../../hooks/redux";
 import { IPhoto } from "../../models/models";
 import { getUserFavorites } from "../../hooks/lsService";
 import { useTheme } from "../../hooks/useTheme";
+import CircularColor from "../../components/CircularColor/CircularColor";
 
 function MainPage() {
     const { isLoading, data } = useGetPhotosQuery();
@@ -30,6 +31,7 @@ function MainPage() {
     return (
         <>
             <ul className={s.listImg} style={{ background: color }}>
+                {isLoading && <CircularColor />}
                 {isSearchLoading && <p className="text-center">Search loading...</p>}
                 {searchData?.length === 0 && (
                     <p style={{ textAlign: "center", fontSize: "1.5rem" }}>

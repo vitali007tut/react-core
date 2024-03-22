@@ -38,3 +38,9 @@
 
 - Использование [**TypeScript**](https://github.com/vitali007tut/react-core/blob/main/tsconfig.json)
 - Настроен [**CI/CD**](https://github.com/vitali007tut/react-core/blob/main/.github/workflows/main.yml)
+
+### *Дополнительно*
+
+- Проект собран при помощи [Vite](https://vitejs.dev/)
+- Использовалась библиотека [react-hot-toast](https://react-hot-toast.com/)
+- Использовалась UI kit библиотека [MUI](https://mui.com/)

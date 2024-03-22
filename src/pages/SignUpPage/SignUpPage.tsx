@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { Button } from "../../components/Button/Button";
+import { Button } from "@mui/material";
 import s from "./SignUpPage.module.css";
 import { useState } from "react";
 import { useActions } from "../../hooks/actions";
@@ -37,7 +37,7 @@ function SignUpPage() {
             <div className={s.title}>Sign Up</div>
             <input
                 placeholder="Email"
-                type="text"
+                type="email"
                 value={email}
                 onChange={(e) => {
                     setEmail(e.target.value);
@@ -57,7 +57,9 @@ function SignUpPage() {
                 pattern="\D{3,}"
                 required
             />
-            <Button type="submit">Submit</Button>
+            <Button variant="contained" type="submit">
+                Submit
+            </Button>
             {!customerExist && (
                 <p className={s.warning}>
                     Customer exists, please <NavLink to="/login">login</NavLink>

@@ -3,7 +3,6 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    /* background: burlywood; */
 }
 
 .light {
@@ -16,7 +15,7 @@
 
 .searchArea {
     position: relative;
-    min-width: 500px;
+    min-width: 300px;
 }
 
 .dropDownArea {

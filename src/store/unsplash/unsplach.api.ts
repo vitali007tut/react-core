@@ -19,7 +19,7 @@ export const unsplashApi = createApi({
                     per_page,
                 },
             }),
-            transformResponse: (response: ServerResponse<IPhoto>) => response.results,
+            transformResponse: (response: ServerResponse<IPhoto>): IPhoto[] => response.results,
         }),
         getPhotos: build.query<IPhoto[], void>({
             query: () => ({

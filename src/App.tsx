@@ -11,6 +11,7 @@ const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage"));
 import { ErrorBoundary } from "react-error-boundary";
 import { useTypedSelector } from "./hooks/redux";
 import CircularColor from "./components/CircularColor/CircularColor";
+import ResultsPage from "./pages/ResultsPage/ResultsPage";
 
 function App() {
     const { isAuth } = useTypedSelector((state) => state.userAuth);
@@ -23,6 +24,7 @@ function App() {
                     <Suspense fallback={<CircularColor />}>
                         <Routes>
                             <Route path="/" element={<MainPage />} />
+                            <Route path="/search" element={<ResultsPage />} />
                             {isAuth && (
                                 <>
                                     <Route path="login" element={<MainPage />} />

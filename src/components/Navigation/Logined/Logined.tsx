@@ -1,16 +1,16 @@
 import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { useActions } from "../../../hooks/actions";
-import { cleareLogin } from "../../../hooks/lsService";
 import LogoutIcon from "@mui/icons-material/Logout";
 import s from "./Logined.module.css";
+import { dataKeeperLogin } from "../../../hooks/dataKeeperLogin";
 
 function Logined() {
     const { setAuth } = useActions();
 
     const handleLogout = () => {
         setAuth(false);
-        cleareLogin();
+        dataKeeperLogin.remove();
     };
 
     return (

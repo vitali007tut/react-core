@@ -46,7 +46,7 @@ const Header = () => {
         changeSearch(search);
         setSearch("");
         if (isAuth) addSearchToCurrentUser(search);
-        navigate(`/?query=${search}`);
+        navigate(`/search?query=${search}`);
     };
 
     const thumbHandle = () => {

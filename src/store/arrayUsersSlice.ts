@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IPhoto, IUser } from "../models/models";
-import { getUsersFromDB, receaveLogin, setAuthLoginToLs, setUsersToLs } from "../hooks/lsService";
+// import { getUsersFromDB, receaveLogin, setAuthLoginToLs, setUsersToLs } from "../hooks/lsService";
+import { dataKeeperLogin } from "../hooks/dataKeeperLogin";
+import { dataKeeperUsers } from "../hooks/dataKeeperUsers";
 
-const initialState: IUser[] = getUsersFromDB();
+const initialState: IUser[] = dataKeeperUsers.get();
 
 export const arrayUsersSlice = createSlice({
     name: "users",
@@ -10,29 +12,32 @@ export const arrayUsersSlice = createSlice({
     reducers: {
         addUserToDB(state, action: PayloadAction<IUser>) {
             state.push(action.payload);
-            setUsersToLs(state);
-            setAuthLoginToLs(action.payload.email);
+            dataKeeperUsers.set(state);
+            // setAuthLoginToLs(action.payload.email);
+            dataKeeperLogin.set(action.payload.email);
         },
         addFavToCurrentUser(state, action: PayloadAction<IPhoto>) {
-            const login = receaveLogin();
+            const login = dataKeeperLogin.get();
             state.forEach((e) => {
                 if (e.email === login) {
                     e.favorites.push(action.payload);
                 }
             });
-            setUsersToLs(state);
+            dataKeeperUsers.set(state);
         },
         removeFavFromCurrentUser(state, action: PayloadAction<IPhoto>) {
-            const login = receaveLogin();
+            // const login = receaveLogin();
+            const login = dataKeeperLogin.get();
             state.forEach((e) => {
                 if (e.email === login) {
                     e.favorites = e.favorites.filter((item) => item.id !== action.payload.id);
                 }
             });
-            setUsersToLs(state);
+            dataKeeperUsers.set(state);
         },
         addSearchToCurrentUser(state, action: PayloadAction<string>) {
-            const login = receaveLogin();
+            // const login = receaveLogin();
+            const login = dataKeeperLogin.get();
             state.forEach((e) => {
                 if (e.email === login) {
                     if (!e.history.includes(action.payload)) {
@@ -40,16 +45,17 @@ export const arrayUsersSlice = createSlice({
                     }
                 }
             });
-            setUsersToLs(state);
+            dataKeeperUsers.set(state);
         },
         removeSearchFromCurrentUser(state, action: PayloadAction<string>) {
-            const login = receaveLogin();
+            // const login = receaveLogin();
+            const login = dataKeeperLogin.get();
             state.forEach((e) => {
                 if (e.email === login) {
                     e.history = e.history.filter((item) => item !== action.payload);
                 }
             });
-            setUsersToLs(state);
+            dataKeeperUsers.set(state);
         },
     },
 });

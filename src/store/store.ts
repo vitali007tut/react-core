@@ -4,6 +4,8 @@ import { searchReducer } from "./unsplash/searchSlice";
 import { userAuthReducer } from "./userAuthSlice";
 import { arrayUsersReducer } from "./arrayUsersSlice";
 import { userAuthMiddleware } from "./middleware";
+import { searchMiddleware } from "./shearchMiddleware";
+import { usersMiddleware } from "./usersMiddleware";
 
 const store = configureStore({
     reducer: {
@@ -13,7 +15,13 @@ const store = configureStore({
         arrayUsers: arrayUsersReducer,
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(unsplashApi.middleware).concat(userAuthMiddleware.middleware),
+        getDefaultMiddleware()
+            .concat(unsplashApi.middleware)
+            .concat(
+                userAuthMiddleware.middleware,
+                searchMiddleware.middleware,
+                usersMiddleware.middleware,
+            ),
 });
 
 export default store;

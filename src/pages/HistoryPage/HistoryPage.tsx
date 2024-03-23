@@ -6,7 +6,7 @@ import s from "./HistoryPage.module.css";
 function HistoryPage() {
     let history: string[] = [];
     const users = useTypedSelector((state) => state.arrayUsers);
-    history = getUserHistory(users);
+    history = getUserHistory(users.users);
 
     return (
         <>

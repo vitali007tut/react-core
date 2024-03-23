@@ -2,18 +2,22 @@ import { IPhoto, IUser } from "../models/models";
 
 export function isUserExists(userEmail: string) {
     if (!localStorage.getItem("arrayUsers")) return false;
-    const usersLs: IUser[] = JSON.parse(localStorage.getItem("arrayUsers") || "");
+    const usersLs: { users: IUser[]; currentUser: string } = JSON.parse(
+        localStorage.getItem("arrayUsers") || "",
+    );
 
-    if (!usersLs.length) return false;
-    const arrayExistIds = usersLs.map((userLs) => userLs.email);
+    if (!usersLs.users.length) return false;
+    const arrayExistIds = usersLs.users.map((userLs) => userLs.email);
     return arrayExistIds.includes(userEmail);
 }
 
 export function isCorrectData(email: string, password: string) {
     if (!localStorage.getItem("arrayUsers")) return false;
-    const usersLs: IUser[] = JSON.parse(localStorage.getItem("arrayUsers") || "");
-    if (!usersLs.length) return false;
-    const userInArray: IUser[] = usersLs.filter((userLs) => userLs.email === email);
+    const usersLs: { users: IUser[]; currentUser: string } = JSON.parse(
+        localStorage.getItem("arrayUsers") || "",
+    );
+    if (!usersLs.users.length) return false;
+    const userInArray: IUser[] = usersLs.users.filter((userLs) => userLs.email === email);
 
     return userInArray[0].email === email && userInArray[0].password === password;
 }

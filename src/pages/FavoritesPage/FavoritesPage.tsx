@@ -8,7 +8,7 @@ function FavoritesPage() {
     const { isAuth } = useTypedSelector((state) => state.userAuth);
     let favorites: IPhoto[] = [];
     const users = useTypedSelector((state) => state.arrayUsers);
-    favorites = getUserFavorites(users);
+    favorites = getUserFavorites(users.users);
 
     return (
         <>

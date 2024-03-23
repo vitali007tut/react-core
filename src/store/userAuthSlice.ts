@@ -15,7 +15,6 @@ export const userAuthSlice = createSlice({
     reducers: {
         setAuth(state, action: PayloadAction<boolean>) {
             state.isAuth = action.payload;
-            dataKeeperAuth.set(state.isAuth);
         },
     },
 });

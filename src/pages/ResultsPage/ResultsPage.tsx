@@ -10,7 +10,7 @@ export default function ResultsPage() {
     const { theme } = useTheme();
     const { isAuth } = useTypedSelector((state) => state.userAuth);
     const users = useTypedSelector((state) => state.arrayUsers);
-    const favorites = getUserFavorites(users);
+    const favorites = getUserFavorites(users.users);
     const color = theme === "light" ? "black" : "";
 
     const { isLoading: isSearchLoading, data: searchData } = useSearchPhotosQuery(

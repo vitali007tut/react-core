@@ -45,7 +45,7 @@ const MediaCard = (props: Props) => {
                 </Typography>
             </CardContent>
             <div className={s.buttons}>
-                <Link to={`details/${props.id}`}>
+                <Link to={`/details/${props.id}`}>
                     <Button>Details</Button>
                 </Link>
                 {props.logined && (

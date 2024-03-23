@@ -51,7 +51,7 @@ const Header = () => {
 
     const thumbHandle = () => {
         setSearch("");
-    }
+    };
 
     const color = theme === "light" ? "chocolate" : "burlywood";
 

@@ -19,7 +19,7 @@ export default function HistoryCard(props: Props) {
     const searchHandler = (event: React.SyntheticEvent<HTMLElement>) => {
         event.preventDefault();
         changeSearch(props.item);
-        navigate("/");
+        navigate(`/?query=${props.item}`);
     };
 
     return (

@@ -30,17 +30,17 @@
 
 -   Используем [**Modern Redux with Redux Toolkit**](https://github.com/vitali007tut/react-core/blob/main/src/store/store.ts)
 -   Используем [**слайсы**](https://github.com/vitali007tut/react-core/blob/main/src/store/userAuthSlice.ts)
-- Есть хотя бы одна **кастомная мидлвара** или [**createListenerMiddleware**](https://github.com/vitali007tut/react-core/blob/main/src/store/middleware.tsx)
-- Используется [**RTK Query**](https://github.com/vitali007tut/react-core/blob/main/src/store/unsplash/unsplach.api.ts)
-- Используется [**Transforming Responses**](https://github.com/vitali007tut/react-core/blob/main/src/store/unsplash/unsplach.api.ts)
+-   Есть хотя бы одна **кастомная мидлвара** или [**createListenerMiddleware**](https://github.com/vitali007tut/react-core/blob/main/src/store/middleware.tsx)
+-   Используется [**RTK Query**](https://github.com/vitali007tut/react-core/blob/main/src/store/unsplash/unsplach.api.ts)
+-   Используется [**Transforming Responses**](https://github.com/vitali007tut/react-core/blob/main/src/store/unsplash/unsplach.api.ts)
 
 ### **2 уровень (необязательный)**
 
-- Использование [**TypeScript**](https://github.com/vitali007tut/react-core/blob/main/tsconfig.json)
-- Настроен [**CI/CD**](https://github.com/vitali007tut/react-core/blob/main/.github/workflows/main.yml)
+-   Использование [**TypeScript**](https://github.com/vitali007tut/react-core/blob/main/tsconfig.json)
+-   Настроен [**CI/CD**](https://github.com/vitali007tut/react-core/blob/main/.github/workflows/main.yml)
 
-### *Дополнительно*
+### _Дополнительно_
 
-- Проект собран при помощи [Vite](https://vitejs.dev/)
-- Использовалась библиотека [react-hot-toast](https://react-hot-toast.com/)
-- Использовалась UI kit библиотека [MUI](https://mui.com/)
+-   Проект собран при помощи [Vite](https://vitejs.dev/)
+-   Использовалась дополнительные библиотеки [react-hot-toast](https://react-hot-toast.com/) и [react-error-boundary](https://www.npmjs.com/package/react-error-boundary)
+-   Использовалась UI kit библиотека [MUI](https://mui.com/)

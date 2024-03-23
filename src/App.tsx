@@ -14,7 +14,7 @@ import CircularColor from "./components/CircularColor/CircularColor";
 
 function App() {
     const { isAuth } = useTypedSelector((state) => state.userAuth);
-    
+
     return (
         <ErrorBoundary fallback={<div>ErrorBoundary: Something went wrong</div>}>
             <BrowserRouter>

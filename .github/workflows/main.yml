@@ -27,6 +27,8 @@ jobs:
 
             - name: Build project
               run: npm run build
+              env:
+                  VITE_CLIEN_ID: ${{ secrets.VITE_CLIEN_ID }}
 
             - name: Upload production-ready build files
               uses: actions/upload-artifact@v2
@@ -48,12 +50,16 @@ jobs:
               with:
                   name: production-files
                   path: ./dist
+              env:
+                  VITE_CLIEN_ID: ${{ secrets.VITE_CLIEN_ID }}
 
             - name: Deploy to GitHub Pages
               uses: peaceiris/actions-gh-pages@v3
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: ./dist
+              env:
+                  VITE_CLIEN_ID: ${{ secrets.VITE_CLIEN_ID }}
 
     lint:
         name: Eslint/Prettier

@@ -12,7 +12,7 @@ function MainPage() {
     const { theme } = useTheme();
     let favorites: IPhoto[] = [];
     const users = useTypedSelector((state) => state.arrayUsers);
-    favorites = getUserFavorites(users);
+    favorites = getUserFavorites(users.users);
 
     const color = theme === "light" ? "black" : "";
 

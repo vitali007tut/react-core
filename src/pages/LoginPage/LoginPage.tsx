@@ -11,7 +11,7 @@ function LoginPage() {
     const [customerExist, setCustomerExist] = useState(true);
     const [isUserCorrect, setIsUserCorrect] = useState(true);
     const navigate = useNavigate();
-    const { setAuth } = useActions();
+    const { setAuth, setCurrentUser } = useActions();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -27,6 +27,7 @@ function LoginPage() {
             setAuth(true);
             navigate("/");
             setUser(email);
+            setCurrentUser(email);
         }
     };
 

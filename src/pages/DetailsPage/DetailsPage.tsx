@@ -16,7 +16,7 @@ export default function DetailsPage() {
     const { isAuth } = useTypedSelector((state) => state.userAuth);
     let favorites: IPhoto[] = [];
     const users = useTypedSelector((state) => state.arrayUsers);
-    favorites = getUserFavorites(users);
+    favorites = getUserFavorites(users.users);
     const [isFavorite, setIsFavorite] = useState(favorites.map((e) => e.id).includes(id || ""));
     const { isLoading, data } = useGetPhotoQuery(id || "");
 

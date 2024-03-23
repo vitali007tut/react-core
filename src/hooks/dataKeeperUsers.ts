@@ -1,10 +1,16 @@
 import { IUser } from "../models/models";
 
 export const dataKeeperUsers = {
-    get: (): IUser[] => {
-        return JSON.parse(localStorage.getItem("arrayUsers") || "[]");
+    get: (): { users: IUser[]; currentUser: string } => {
+        if (localStorage.getItem("arrayUsers")) {
+            return JSON.parse(localStorage.getItem("arrayUsers") || "");
+        } else {
+            return { users: [], currentUser: "" };
+        }
     },
-    set: (value: IUser[]): void => {
-        localStorage.setItem("arrayUsers", JSON.stringify(value));
+    set: (obj: { users: IUser[]; currentUser: string }): void => {
+        localStorage.setItem("arrayUsers", JSON.stringify(obj));
     },
 };
+
+// { users: IUser[], currentUser: string }

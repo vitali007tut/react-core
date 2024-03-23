@@ -11,6 +11,7 @@ import s from "./MediaCard.module.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 type Props = {
     item: IPhoto;
@@ -44,7 +45,9 @@ const MediaCard = (props: Props) => {
                 </Typography>
             </CardContent>
             <div className={s.buttons}>
-                <Button href={`/details/${props.id}`}>Details</Button>
+                <Link to={`details/${props.id}`}>
+                    <Button>Details</Button>
+                </Link>
                 {props.logined && (
                     <CardActions>
                         <Button

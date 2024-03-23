@@ -1,1 +1,0 @@
-import{j as a,B as s}from"./index-mktUUgwZ.js";const u=({children:t,size:o,endIcon:r,type:n="button"})=>a.jsx(s,{type:n,variant:"contained",color:"primary",size:o,endIcon:r,children:t});export{u as B};

@@ -3,7 +3,7 @@
 # Проект React + TypeScript + Vite + Photos
 
 -   Photo API: [Unsplash](https://unsplash.com/documentation)
--   Deploy: [link](https://amazing-monstera-35e18a.netlify.app/)
+-   Deploy: [link](https://deploy-preview-11--amazing-monstera-35e18a.netlify.app/))
 
 ## Реализованные требования:
 

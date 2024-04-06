@@ -16,7 +16,7 @@ export default function ResultsPage() {
     const { isLoading: isSearchLoading, data: searchData } = useSearchPhotosQuery(
         {
             search,
-            per_page: "11",
+            per_page: "30",
         },
         {
             skip: search.length < 3,
@@ -24,7 +24,7 @@ export default function ResultsPage() {
     );
 
     return (
-        <>
+        <div className={s.container}>
             {searchData?.length !== 0 && (
                 <p className={s.title} style={{ background: color }}>
                     Search results for word: <span style={{ color: "red" }}>{search}</span>
@@ -50,6 +50,6 @@ export default function ResultsPage() {
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
     );
 }

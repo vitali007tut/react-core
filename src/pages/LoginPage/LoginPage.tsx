@@ -32,47 +32,49 @@ function LoginPage() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className={s.form}>
-            <div className={s.title}>LogIn</div>
-            <input
-                placeholder="Email"
-                type="text"
-                value={email}
-                onChange={(e) => {
-                    setEmail(e.target.value);
-                    setCustomerExist(true);
-                    setIsUserCorrect(true);
-                }}
-                pattern="\D{3,}"
-                required
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => {
-                    setPassword(e.target.value);
-                    setCustomerExist(true);
-                    setIsUserCorrect(true);
-                }}
-                pattern="\D{3,}"
-                required
-            />
-            <Button variant="contained" type="submit">
-                Submit
-            </Button>
-            {!customerExist && (
-                <p className={s.warning}>
-                    Customer doesn't exist, please <NavLink to="/signup">signup</NavLink>
-                </p>
-            )}
-            {!isUserCorrect && (
-                <p className={s.warning}>
-                    Password incorrect, please try one more time or{" "}
-                    <NavLink to="/signup">signup</NavLink>
-                </p>
-            )}
-        </form>
+        <div className={s.container}>
+            <form onSubmit={handleSubmit} className={s.form}>
+                <div className={s.title}>LogIn</div>
+                <input
+                    placeholder="Email"
+                    type="text"
+                    value={email}
+                    onChange={(e) => {
+                        setEmail(e.target.value);
+                        setCustomerExist(true);
+                        setIsUserCorrect(true);
+                    }}
+                    pattern="\D{3,}"
+                    required
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                        setCustomerExist(true);
+                        setIsUserCorrect(true);
+                    }}
+                    pattern="\D{3,}"
+                    required
+                />
+                <Button variant="contained" type="submit">
+                    Submit
+                </Button>
+                {!customerExist && (
+                    <p className={s.warning}>
+                        Customer doesn't exist, please <NavLink to="/signup">signup</NavLink>
+                    </p>
+                )}
+                {!isUserCorrect && (
+                    <p className={s.warning}>
+                        Password incorrect, please try one more time or{" "}
+                        <NavLink to="/signup">signup</NavLink>
+                    </p>
+                )}
+            </form>
+        </div>
     );
 }
 

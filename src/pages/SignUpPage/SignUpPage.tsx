@@ -33,39 +33,41 @@ function SignUpPage() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className={s.form}>
-            <div className={s.title}>Sign Up</div>
-            <input
-                placeholder="Email"
-                type="email"
-                value={email}
-                onChange={(e) => {
-                    setEmail(e.target.value);
-                    setCustomerExist(true);
-                }}
-                pattern="\D{3,}"
-                required
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => {
-                    setPassword(e.target.value);
-                    setCustomerExist(true);
-                }}
-                pattern="\D{3,}"
-                required
-            />
-            <Button variant="contained" type="submit">
-                Submit
-            </Button>
-            {!customerExist && (
-                <p className={s.warning}>
-                    Customer exists, please <NavLink to="/login">login</NavLink>
-                </p>
-            )}
-        </form>
+        <div className={s.container}>
+            <form onSubmit={handleSubmit} className={s.form}>
+                <div className={s.title}>Sign Up</div>
+                <input
+                    placeholder="Email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => {
+                        setEmail(e.target.value);
+                        setCustomerExist(true);
+                    }}
+                    pattern="\D{3,}"
+                    required
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                        setCustomerExist(true);
+                    }}
+                    pattern="\D{3,}"
+                    required
+                />
+                <Button variant="contained" type="submit">
+                    Submit
+                </Button>
+                {!customerExist && (
+                    <p className={s.warning}>
+                        Customer exists, please <NavLink to="/login">login</NavLink>
+                    </p>
+                )}
+            </form>
+        </div>
     );
 }
 

@@ -17,7 +17,7 @@ function MainPage() {
     const color = theme === "light" ? "black" : "";
 
     return (
-        <>
+        <div className={s.container}>
             <p className={s.title} style={{ background: color }}>
                 Main page
             </p>
@@ -36,7 +36,7 @@ function MainPage() {
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
     );
 }
 

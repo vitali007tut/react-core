@@ -55,6 +55,12 @@ export default function DetailsPage() {
                         Link
                     </a>
                 </div>
+                <div>
+                    <b>The biggest view: </b>
+                    <a href={data?.urls.full} target="_blank">
+                        Link
+                    </a>
+                </div>
                 {isAuth && (
                     <Button onClick={addToFavorites} size="small">
                         {isFavorite ? "Remove from" : "Add to"}&nbsp;
